@@ -51,7 +51,7 @@ pip install -e .
 > installed in development mode. This means that the project source code won't be copied
 > to your Python environment `site-packages` directory.
 
-### Running the solver
+### Quickstart
 
 Follow the instructions below to use the solver:
 
@@ -76,7 +76,7 @@ SA parameters:
     -t0 <t0>       : Initial temperature for Simulated Annealing (default: 1.0). 
 ```
 
-### Examples
+#### Running the code
 
 ```bash
 python pyblend instance_1.json out_1.json
@@ -85,8 +85,16 @@ python pyblend instance_1.json out_1.json -constructive premodel -seed 1
 python pyblend instance_1.json out_1.json -algorithm sa -alpha 0.98 -samax 1000 -t0 1e5
 ```
 
-Running the first example from the preceding list generates the following
-output JSON file to the [out](./out) directory:
+#### Example
+
+The following command solves the test-case problem [instance_1.json](./tests/instance_1.json):
+
+```bash
+python pyblend instance_1.json out_1.json
+```
+
+The generated output [out_1.json](./out/out_1.json) file is saved to the [out](./out) directory.
+The [out_1.json](./out/out_1.json) file has the following structure:
 
 ```json
 {
@@ -194,7 +202,7 @@ output JSON file to the [out](./out) directory:
 }
 ```
 
-The output JSON indicates that the **ore is reclaimed from three stockpiles** 1,
+The optimization result indicates that the **ore is reclaimed from three stockpiles** 1,
 2, and 3 using **engines 1 and 2**. The total weight reclaimed from these 
 stockpiles is as follows:
 
