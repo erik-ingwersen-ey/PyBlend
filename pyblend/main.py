@@ -1,5 +1,6 @@
 import random
 import sys
+import time
 from typing import List, Optional
 
 from pyblend.algorithm.constructive import Constructive, LinModel, PostModel, PreModel
@@ -10,13 +11,15 @@ from pyblend.algorithm.neighborhood import (Shift, SimpleSwap, SmartShift,
 from pyblend.config import Objective, Parameters
 from pyblend.model.problem import Problem
 from pyblend.model.solution import Solution
+from pyblend.utils import handle_input_path, handle_output_path
 
 
 def main():
     """
     This is the main function, responsible for parsing the input,
-    instantiating moves and heuristics and printing the results.
+    instantiating moves and heuristics, and printing the results.
     """
+    start_time = time.time()
     parms: Parameters = {
         "constructive": "postmodel",
         "algorithm": "",
@@ -33,7 +36,10 @@ def main():
 
     random.seed(parms["seed"])
 
-    problem: Problem = Problem("./tests/" + sys.argv[1])
+    input_path = handle_input_path(sys.argv[1])
+    output_path = handle_output_path(sys.argv[2])
+
+    problem: Problem = Problem(input_path)
     solution: Solution = Solution(problem)
     model: LinModel = LinModel(problem)
 
@@ -48,7 +54,7 @@ def main():
         feedback_approach(solution, model, solver, constructive, parms)
 
     solution.set_deliveries()
-    solution.write("./out/json/" + sys.argv[2], None)
+    solution.write(output_path, round(time.time()-start_time, 2))
 
 
 def construct(
@@ -172,7 +178,7 @@ def feedback_approach(
     constructive: Constructive,
     parms: Parameters,
 ) -> None:
-    """This functions runs the feedback approach.
+    """Run the feedback approach.
 
     Parameters
     ----------
@@ -195,12 +201,12 @@ def feedback_approach(
         solution.set_objective(objective)
 
         constructive.run()
-        if solver != None:
+        if solver is not None:
             solver.run(solution, parms["maxiters"], True)
 
 
 def read_args(args: List[str], parms: Parameters) -> None:
-    """This function reads the input arguments.
+    """Read the input arguments.
 
     Parameters
     ----------
@@ -245,7 +251,7 @@ def read_args(args: List[str], parms: Parameters) -> None:
 
 
 def print_usage(parms: Parameters) -> None:
-    """This function prints the program usage.
+    """Print the program usage.
 
     Parameters
     ----------
@@ -259,7 +265,7 @@ def print_usage(parms: Parameters) -> None:
         + f"\nOptions:\n"
         + f'    -constructive <constructive> : premodel, postmodel (default: {parms["constructive"]}).\n'
         + f"    -algorithm <algorithm>       : lahc, sa.\n"
-        + f'    -feedback <feedback>         : maximum number of feedback interactions with the model (defaulf: {parms["feedback"]}).\n'
+        + f'    -feedback <feedback>         : maximum number of feedback interactions with the model (default: {parms["feedback"]}).\n'
         + f'    -seed <seed>                 : random seed (default: {parms["seed"]}).\n'
         + f'    -maxiters <maxiters>         : maximum number of interactions (default: {parms["maxiters"]}).\n'
         + f"\n    LAHC parameters:\n"

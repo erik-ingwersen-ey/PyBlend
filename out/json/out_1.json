@@ -6,14 +6,14 @@
   ],
   "objective": 8523333.333333371,
   "gap": [
-    0.37
+    0.74
   ],
   "stacks": [
     {
       "weight": 80000.0,
       "stockpile": 1,
       "engine": 2,
-      "start_time": 7.91,
+      "start_time": 231.37,
       "duration": 22.22
     }
   ],
@@ -22,7 +22,31 @@
       "weight": 90000.0,
       "stockpile": 2,
       "engine": 1,
-      "start_time": 0.06,
+      "start_time": 0.11,
+      "duration": 69.23,
+      "output": 1
+    },
+    {
+      "weight": 200000.0,
+      "stockpile": 1,
+      "engine": 1,
+      "start_time": 69.4,
+      "duration": 153.85,
+      "output": 1
+    },
+    {
+      "weight": 200000.0,
+      "stockpile": 1,
+      "engine": 1,
+      "start_time": 223.31,
+      "duration": 153.85,
+      "output": 1
+    },
+    {
+      "weight": 90000.0,
+      "stockpile": 2,
+      "engine": 1,
+      "start_time": 377.27,
       "duration": 69.23,
       "output": 1
     },
@@ -30,24 +54,48 @@
       "weight": 10000.0,
       "stockpile": 3,
       "engine": 2,
-      "start_time": 0.06,
+      "start_time": 0.16,
       "duration": 7.69,
+      "output": 1
+    },
+    {
+      "weight": 0.0,
+      "stockpile": 4,
+      "engine": 2,
+      "start_time": 8.06,
+      "duration": 0.0,
+      "output": 1
+    },
+    {
+      "weight": 90000.0,
+      "stockpile": 2,
+      "engine": 2,
+      "start_time": 8.17,
+      "duration": 69.23,
       "output": 1
     },
     {
       "weight": 200000.0,
       "stockpile": 1,
       "engine": 2,
-      "start_time": 30.19,
+      "start_time": 77.46,
       "duration": 153.85,
+      "output": 1
+    },
+    {
+      "weight": 10000.0,
+      "stockpile": 3,
+      "engine": 2,
+      "start_time": 407.6,
+      "duration": 7.69,
       "output": 1
     }
   ],
   "outputs": [
     {
       "weight": 300000,
-      "start_time": 0.06,
-      "duration": 183.98,
+      "start_time": 0.11,
+      "duration": 446.39,
       "quality": [
         {
           "parameter": "Fe",
@@ -100,5 +148,5 @@
       ]
     }
   ],
-  "time": null
+  "time": -0.13
 }
