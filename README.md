@@ -214,6 +214,11 @@ The total reclaimed weight is the sum of the weights reclaimed from each stockpi
 
 $\text{Total Reclaimed Weight} = 90,000 \,\text{(Stockpile 2)} + 10,000 \,\text{(Stockpile 3)} + 200,000 \, \text{(Stockpile 1)} = 300,000 \, \text{tons}$
 
+The following illustration shows the steps taken by **engine 2**:
+
+<div align="center">
+  <img src="./design/engine2-test1-timestamps.svg" alt="Engine 2 Steps"/>
+</div>
 
 The weighted average for each quality parameter is calculated using the formula:
 
