@@ -1,0 +1,3964 @@
+{
+  "info": [
+    "Instance_B010",
+    1000,
+    1
+  ],
+  "stockpiles": [
+    {
+      "id": 1,
+      "position": 0,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 4206.1,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 3787.6,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 64.49
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.13
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 2.4
+        },
+        {
+          "parameter": "P",
+          "value": 3.19
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.12
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.53
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "position": 1,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 6859.5,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5932.9,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 52.7
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.69
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.41
+        },
+        {
+          "parameter": "P",
+          "value": 3.14
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.19
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.26
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "position": 2,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 4471.9,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 3555.4,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 35.17
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.27
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 6.61
+        },
+        {
+          "parameter": "P",
+          "value": 3.09
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.37
+        },
+        {
+          "parameter": "-6.3",
+          "value": 5.72
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "position": 3,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 7567.5,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5246.9,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 43.71
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.93
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.56
+        },
+        {
+          "parameter": "P",
+          "value": 0.52
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.2
+        },
+        {
+          "parameter": "-6.3",
+          "value": 5.91
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "position": 4,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 8862.7,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5710.8,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 99.59
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.54
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 2.72
+        },
+        {
+          "parameter": "P",
+          "value": 5.03
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.38
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.96
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "position": 5,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 6515.6,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5253.7,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 39.8
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.71
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 6.38
+        },
+        {
+          "parameter": "P",
+          "value": 2.78
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.22
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.15
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "position": 6,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 7014.2,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 6239.1,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 40.88
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.55
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 6.52
+        },
+        {
+          "parameter": "P",
+          "value": 5.41
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.04
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.17
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "position": 7,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 4552.1,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 3486.4,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 64.71
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.05
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.71
+        },
+        {
+          "parameter": "P",
+          "value": 4.53
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.13
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.21
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "position": 8,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 7468.9,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5759.6,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 67.57
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.68
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.63
+        },
+        {
+          "parameter": "P",
+          "value": 5.03
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.39
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.73
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "position": 9,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 7666.0,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 7045.5,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 71.11
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.59
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 0.98
+        },
+        {
+          "parameter": "P",
+          "value": 1.02
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.55
+        },
+        {
+          "parameter": "-6.3",
+          "value": 5.57
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "position": 10,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 6353.1,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 6311.9,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 54.83
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.52
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.23
+        },
+        {
+          "parameter": "P",
+          "value": 5.75
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.67
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.52
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "position": 11,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 6921.5,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 6825.7,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 50.54
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.2
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 1.88
+        },
+        {
+          "parameter": "P",
+          "value": 0.04
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.78
+        },
+        {
+          "parameter": "-6.3",
+          "value": 2.98
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "position": 12,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 4328.1,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4266.7,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 55.86
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.53
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.57
+        },
+        {
+          "parameter": "P",
+          "value": 4.76
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.32
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.52
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "position": 13,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 4120.1,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 2602.7,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 61.87
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.35
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.69
+        },
+        {
+          "parameter": "P",
+          "value": 2.69
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.19
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.24
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "position": 14,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 4539.8,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4246.5,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 53.03
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.99
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 4.25
+        },
+        {
+          "parameter": "P",
+          "value": 0.33
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.75
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.3
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "position": 15,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 6916.0,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4220.5,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 64.84
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.26
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.92
+        },
+        {
+          "parameter": "P",
+          "value": 2.51
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.45
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.73
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "position": 16,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 5486.3,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4988.6,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 86.29
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.33
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 2.15
+        },
+        {
+          "parameter": "P",
+          "value": 1.74
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.36
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.95
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "position": 17,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 6585.9,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5922.0,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 92.73
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.24
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.3
+        },
+        {
+          "parameter": "P",
+          "value": 6.71
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.72
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.82
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "position": 18,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 5844.9,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5452.8,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 59.52
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.11
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 5.64
+        },
+        {
+          "parameter": "P",
+          "value": 1.53
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.15
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.71
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "position": 19,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 5758.3,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4972.0,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 68.17
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.27
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 2.15
+        },
+        {
+          "parameter": "P",
+          "value": 1.24
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.03
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.9
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "position": 20,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 7493.9,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 7075.8,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 35.92
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.41
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.94
+        },
+        {
+          "parameter": "P",
+          "value": 3.37
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.14
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.25
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "position": 21,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 5667.3,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5501.6,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 79.01
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.84
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 1.1
+        },
+        {
+          "parameter": "P",
+          "value": 3.2
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.25
+        },
+        {
+          "parameter": "-6.3",
+          "value": 4.22
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "position": 22,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 6862.0,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 6525.0,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 62.7
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.0
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.04
+        },
+        {
+          "parameter": "P",
+          "value": 4.9
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.23
+        },
+        {
+          "parameter": "-6.3",
+          "value": 5.47
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "position": 23,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 5688.3,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4678.3,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 40.42
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.77
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 1.81
+        },
+        {
+          "parameter": "P",
+          "value": 3.39
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.25
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.59
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "position": 24,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 6260.0,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4568.4,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 73.21
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.72
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 2.83
+        },
+        {
+          "parameter": "P",
+          "value": 0.61
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.94
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.75
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "position": 25,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 7624.7,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 6506.9,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 97.44
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.09
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.4
+        },
+        {
+          "parameter": "P",
+          "value": 0.15
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.09
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.39
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "position": 26,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 8107.8,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5054.4,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 92.98
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.55
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 3.06
+        },
+        {
+          "parameter": "P",
+          "value": 3.4
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.5
+        },
+        {
+          "parameter": "-6.3",
+          "value": 2.94
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "position": 27,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 7182.6,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 4503.4,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 62.47
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.47
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 4.64
+        },
+        {
+          "parameter": "P",
+          "value": 3.52
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.95
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.63
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "position": 28,
+      "yard": 1,
+      "rails": [
+        1,
+        2
+      ],
+      "capacity": 4882.3,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 3410.5,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 83.37
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.16
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 5.34
+        },
+        {
+          "parameter": "P",
+          "value": 5.55
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.21
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.05
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "position": 29,
+      "yard": 2,
+      "rails": [
+        2,
+        3
+      ],
+      "capacity": 8347.5,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 7214.7,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 48.8
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.61
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 6.01
+        },
+        {
+          "parameter": "P",
+          "value": 6.81
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.02
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.83
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "position": 30,
+      "yard": 3,
+      "rails": [
+        3,
+        4
+      ],
+      "capacity": 5887.3,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 5151.3,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 77.18
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.13
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 2.53
+        },
+        {
+          "parameter": "P",
+          "value": 1.85
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.02
+        },
+        {
+          "parameter": "-6.3",
+          "value": 5.25
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "position": 31,
+      "yard": 4,
+      "rails": [
+        4,
+        5
+      ],
+      "capacity": 7811.6,
+      "engines": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "weightIni": 6918.6,
+      "qualityIni": [
+        {
+          "parameter": "Fe",
+          "value": 40.9
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.49
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 4.57
+        },
+        {
+          "parameter": "P",
+          "value": 4.6
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.27
+        },
+        {
+          "parameter": "-6.3",
+          "value": 6.15
+        }
+      ]
+    }
+  ],
+  "engines": [
+    {
+      "id": 1,
+      "speedStack": 36.3,
+      "speedReclaim": 34.0,
+      "posIni": 5,
+      "rail": 1,
+      "yards": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "speedStack": 33.7,
+      "speedReclaim": 44.1,
+      "posIni": 13,
+      "rail": 2,
+      "yards": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "speedStack": 24.7,
+      "speedReclaim": 37.4,
+      "posIni": 26,
+      "rail": 3,
+      "yards": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": 4,
+      "speedStack": 44.7,
+      "speedReclaim": 22.8,
+      "posIni": 25,
+      "rail": 4,
+      "yards": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": 5,
+      "speedStack": 27.3,
+      "speedReclaim": 40.7,
+      "posIni": 23,
+      "rail": 5,
+      "yards": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": 6,
+      "speedStack": 23.2,
+      "speedReclaim": 29.3,
+      "posIni": 16,
+      "rail": 6,
+      "yards": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": 7,
+      "speedStack": 46.4,
+      "speedReclaim": 29.7,
+      "posIni": 28,
+      "rail": 7,
+      "yards": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": 8,
+      "speedStack": 24.5,
+      "speedReclaim": 47.4,
+      "posIni": 14,
+      "rail": 8,
+      "yards": [
+        8
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": 1,
+      "source": 16,
+      "weight": 691.6,
+      "quality": [
+        {
+          "parameter": "Fe",
+          "value": 65.65
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.44
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 4.71
+        },
+        {
+          "parameter": "P",
+          "value": 1.21
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.14
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.74
+        }
+      ],
+      "time": 6.9
+    },
+    {
+      "id": 2,
+      "source": 16,
+      "weight": 691.6,
+      "quality": [
+        {
+          "parameter": "Fe",
+          "value": 66.95
+        },
+        {
+          "parameter": "SiO2",
+          "value": 1.55
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 1.81
+        },
+        {
+          "parameter": "P",
+          "value": 0.41
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.38
+        },
+        {
+          "parameter": "-6.3",
+          "value": 5.0
+        }
+      ],
+      "time": 2.5
+    },
+    {
+      "id": 3,
+      "source": 16,
+      "weight": 691.6,
+      "quality": [
+        {
+          "parameter": "Fe",
+          "value": 37.25
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.94
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 0.64
+        },
+        {
+          "parameter": "P",
+          "value": 1.33
+        },
+        {
+          "parameter": "+31.5",
+          "value": 0.07
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.52
+        }
+      ],
+      "time": 6.2
+    },
+    {
+      "id": 4,
+      "source": 16,
+      "weight": 691.6,
+      "quality": [
+        {
+          "parameter": "Fe",
+          "value": 70.05
+        },
+        {
+          "parameter": "SiO2",
+          "value": 0.23
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 5.62
+        },
+        {
+          "parameter": "P",
+          "value": 5.77
+        },
+        {
+          "parameter": "+31.5",
+          "value": 1.17
+        },
+        {
+          "parameter": "-6.3",
+          "value": 3.25
+        }
+      ],
+      "time": 5.6
+    }
+  ],
+  "outputs": [
+    {
+      "id": 1,
+      "destination": 1,
+      "weight": 4990.1,
+      "quality": [
+        {
+          "parameter": "Fe",
+          "minimum": 55,
+          "maximum": 100,
+          "goal": 97.16,
+          "importance": 10
+        },
+        {
+          "parameter": "SiO2",
+          "minimum": 0,
+          "maximum": 1.5,
+          "goal": 1.13,
+          "importance": 1000
+        },
+        {
+          "parameter": "Al2O3",
+          "minimum": 0,
+          "maximum": 0.5,
+          "goal": 0.18,
+          "importance": 100
+        },
+        {
+          "parameter": "P",
+          "minimum": 0,
+          "maximum": 0.5,
+          "goal": 0.46,
+          "importance": 100
+        },
+        {
+          "parameter": "+31.5",
+          "minimum": 0,
+          "maximum": 1,
+          "goal": 0.35,
+          "importance": 100
+        },
+        {
+          "parameter": "-6.3",
+          "minimum:": 3.5,
+          "maximum": 5,
+          "goal": 4.49,
+          "importance": 100
+        }
+      ],
+      "time": 5.7
+    }
+  ],
+  "distancesTravel": [
+    [
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0,
+      27.0,
+      28.0,
+      29.0,
+      30.0,
+      31.0
+    ],
+    [
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0,
+      27.0,
+      28.0,
+      29.0,
+      30.0
+    ],
+    [
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0,
+      27.0,
+      28.0,
+      29.0
+    ],
+    [
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0,
+      27.0,
+      28.0
+    ],
+    [
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0,
+      27.0
+    ],
+    [
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0
+    ],
+    [
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0
+    ],
+    [
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0
+    ],
+    [
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0
+    ],
+    [
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0
+    ],
+    [
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0
+    ],
+    [
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0
+    ],
+    [
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0
+    ],
+    [
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0
+    ],
+    [
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0
+    ],
+    [
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0
+    ],
+    [
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0
+    ],
+    [
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0
+    ],
+    [
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0
+    ],
+    [
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0
+    ],
+    [
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0
+    ],
+    [
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0
+    ],
+    [
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0
+    ],
+    [
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0
+    ],
+    [
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0
+    ],
+    [
+      25.0,
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0
+    ],
+    [
+      26.0,
+      25.0,
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0
+    ],
+    [
+      27.0,
+      26.0,
+      25.0,
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0
+    ],
+    [
+      28.0,
+      27.0,
+      26.0,
+      25.0,
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0,
+      3.0
+    ],
+    [
+      29.0,
+      28.0,
+      27.0,
+      26.0,
+      25.0,
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0,
+      2.0
+    ],
+    [
+      30.0,
+      29.0,
+      28.0,
+      27.0,
+      26.0,
+      25.0,
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0,
+      1.0
+    ],
+    [
+      31.0,
+      30.0,
+      29.0,
+      28.0,
+      27.0,
+      26.0,
+      25.0,
+      24.0,
+      23.0,
+      22.0,
+      21.0,
+      20.0,
+      19.0,
+      18.0,
+      17.0,
+      16.0,
+      15.0,
+      14.0,
+      13.0,
+      12.0,
+      11.0,
+      10.0,
+      9.0,
+      8.0,
+      7.0,
+      6.0,
+      5.0,
+      4.0,
+      3.0,
+      2.0,
+      1.0,
+      0.0
+    ]
+  ],
+  "timeTravel": [
+    [
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0,
+      510.0,
+      530.0,
+      550.0,
+      570.0,
+      590.0,
+      610.0,
+      630.0
+    ],
+    [
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0,
+      510.0,
+      530.0,
+      550.0,
+      570.0,
+      590.0,
+      610.0
+    ],
+    [
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0,
+      510.0,
+      530.0,
+      550.0,
+      570.0,
+      590.0
+    ],
+    [
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0,
+      510.0,
+      530.0,
+      550.0,
+      570.0
+    ],
+    [
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0,
+      510.0,
+      530.0,
+      550.0
+    ],
+    [
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0,
+      510.0,
+      530.0
+    ],
+    [
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0,
+      510.0
+    ],
+    [
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0,
+      490.0
+    ],
+    [
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0,
+      470.0
+    ],
+    [
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0,
+      450.0
+    ],
+    [
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0,
+      430.0
+    ],
+    [
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0,
+      410.0
+    ],
+    [
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0,
+      390.0
+    ],
+    [
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0,
+      370.0
+    ],
+    [
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0,
+      350.0
+    ],
+    [
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0,
+      330.0
+    ],
+    [
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0,
+      310.0
+    ],
+    [
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0,
+      290.0
+    ],
+    [
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0,
+      270.0
+    ],
+    [
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0,
+      250.0
+    ],
+    [
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0,
+      230.0
+    ],
+    [
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0,
+      210.0
+    ],
+    [
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0,
+      190.0
+    ],
+    [
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0,
+      170.0
+    ],
+    [
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0,
+      150.0
+    ],
+    [
+      510.0,
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0,
+      130.0
+    ],
+    [
+      530.0,
+      510.0,
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0,
+      110.0
+    ],
+    [
+      550.0,
+      530.0,
+      510.0,
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0,
+      90.0
+    ],
+    [
+      570.0,
+      550.0,
+      530.0,
+      510.0,
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0,
+      70.0
+    ],
+    [
+      590.0,
+      570.0,
+      550.0,
+      530.0,
+      510.0,
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0,
+      50.0
+    ],
+    [
+      610.0,
+      590.0,
+      570.0,
+      550.0,
+      530.0,
+      510.0,
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0,
+      30.0
+    ],
+    [
+      630.0,
+      610.0,
+      590.0,
+      570.0,
+      550.0,
+      530.0,
+      510.0,
+      490.0,
+      470.0,
+      450.0,
+      430.0,
+      410.0,
+      390.0,
+      370.0,
+      350.0,
+      330.0,
+      310.0,
+      290.0,
+      270.0,
+      250.0,
+      230.0,
+      210.0,
+      190.0,
+      170.0,
+      150.0,
+      130.0,
+      110.0,
+      90.0,
+      70.0,
+      50.0,
+      30.0,
+      10.0
+    ]
+  ]
+}

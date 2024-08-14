@@ -1,0 +1,124 @@
+[tool.poetry]
+name = 'pyblend'
+version = '0.0.2'
+description = 'Ore Mixing Problem (OMP)'
+license = 'MIT'
+authors = ['Ingwersen_erik <erik.ingwersen@br.ey.com>']
+readme = 'README.md'
+repository = 'https://github.com/erik-ingwersen-ey/pyblend'
+homepage = 'https://github.com/erik-ingwersen-ey/pyblend'
+documentation = 'https://erik-ingwersen-ey.github.io/pyblend'
+keywords = ['optimization', 'ore blending', 'python']
+packages = [
+    { include = 'pyblend' },
+]
+include = [
+    '*.md',
+    '*.rst',
+    '*.cfg',
+    '*.txt',
+    '.flake8',
+    '.pylintrc',
+    'tox.ini',
+    'Makefile',
+    'CHANGES',
+    'LICENSE',
+    'MANIFEST.in',
+    'requirements.txt',
+    'tests/*',
+]
+
+
+[tool.poetry.dependencies]
+python = '>=3.8,<3.11'
+
+ujson = ">=5.10.0"
+numpy = ">=2.0.1"
+mip = ">=1.15.0"
+
+[tool.poetry.scripts]
+poetry = 'poetry.console:run'
+
+#[tool.poetry.extras]
+
+[build-system]
+# Minimum requirements for the build system to execute.
+# See https://github.com/scipy/scipy/pull/12940 for the AIX issue.
+build-backend = 'poetry.core.masonry.api'
+requires = [
+    'poetry-core>=1.0.0',
+    'wheel',
+    'setuptools'
+]
+
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 120
+skip_gitignore = true
+# you can skip files as below
+skip_glob = 'docs/conf.py'
+
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ['py37', 'py38', 'py39']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | docs
+)/
+'''
+
+
+
+[tool.mypy]
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+files = 'pyblend'
+
+# The following allowlist is used to allow for incremental adoption
+# of Mypy. Modules should be removed from this allowlist as and when
+# their respective type errors have been addressed. No new modules
+# should be added to this allowlist.
+# see https://github.com/python-poetry/poetry/pull/4510.
+
+[[tool.mypy.overrides]]
+module = [
+    'poetry.config.file_config_source',
+    'poetry.console.*',
+    'poetry.factory.*',
+    'poetry.inspection.*',
+    'poetry.installation.*',
+    'poetry.layouts.*',
+    'poetry.mixology.*',
+    'poetry.packages.locker',
+    'poetry.repositories.installed_repository',
+    'poetry.utils.*'
+]
+ignore_errors = true
+
+
+[tool.coverage.report]
+exclude_lines = [
+    'pragma: no cover',
+    'if TYPE_CHECKING:'
+]
