@@ -62,27 +62,15 @@ Usage: python pyblend <input> <output> [options]
 
 Options:
     -constructive <constructive> : premodel, postmodel (default: postmodel).
-    -algorithm <algorithm>       : lahc, sa.
     -feedback <feedback>         : maximum number of feedback interactions with the model (default: 0).
     -seed <seed>                 : random seed (default: 0).
     -maxiters <maxiters>         : maximum number of iterations (default: 1000).
-
-LAHC parameters:
-    -lsize <lsize> : LAHC list size (default: 1000).
-
-SA parameters:
-    -alpha <alpha> : Cooling rate for Simulated Annealing (default: 0.9).
-    -samax <samax> : Iterations before updating the temperature for Simulated Annealing (default: 1000).
-    -t0 <t0>       : Initial temperature for Simulated Annealing (default: 1.0). 
 ```
 
 #### Running the code
 
 ```bash
 python pyblend instance_1.json out_1.json
-python pyblend instance_1.json out_1.json
-python pyblend instance_1.json out_1.json -constructive premodel -seed 1
-python pyblend instance_1.json out_1.json -algorithm sa -alpha 0.98 -samax 1000 -t0 1e5
 ```
 
 #### Example
