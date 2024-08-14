@@ -13,7 +13,7 @@ the [Ore Mixing Problem (OMP)](#ore-mixing-or-blending-problem)
 and the [Unrelated Parallel Machine Scheduling Problem (UPMSP)](#unrelated-parallel-machine-scheduling-problem).
 
 
-### Ore mixing or blending problem ⛰ {#ore-mixing-or-blending-problem}
+### Ore mixing or blending problem ⛰
 
 The ore mixing or blending problem involves determining the quantity of
 each ore from a set of piles to form a final product that meets the
@@ -23,7 +23,7 @@ a particular granulometric range—they must be combined in specific proportions
 to achieve the desired quality and quantity.
 
 
-### Unrelated parallel machine scheduling problem 🚜 {#unrelated-parallel-machine-scheduling-problem}
+### Unrelated parallel machine scheduling problem 🚜
 
 This problem focuses on scheduling a set of jobs, each available at a specific time,
 on unrelated machines. The challenge lies in managing the stacking and recovery
