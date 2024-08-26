@@ -4,9 +4,10 @@ from pyblend.model.classes.quality import Quality
 
 
 class Input:
-    """This class represents an ore Input. The attributes indicate the weight 
-    of ore available in the input, the quality parameters of these ores and 
-    when the input is available.
+    """Ore Input.
+
+    The attributes indicate the weight of ore available in the input,
+    the quality parameters of these ores and when the input is available.
     """
 
     def __init__(
@@ -16,35 +17,41 @@ class Input:
         quality: List[Quality],
         time: float
     ):
-        """Instantiates a new Input.
+        """Instantiates a new `Input` class.
 
-        Args:
-            id (int): The input identifier.
-            weight (float): The input ore weight.
-            quality (List[Quality]): List with the quality parameters.
-            time (float): Time when input is available.
+        Parameters
+        ----------
+        id : int
+            The input identifier.
+        weight : float
+            The input ore weight.
+        quality : List[Quality]
+            List with the quality parameters.
+        time : float
+            Time when input is available.
         """
-        
         self._id: int = id
         self._weight: float = weight
         self._quality: List[Quality] = quality
         self._time: float = time
 
     def __repr__(self: 'Input') -> str:
-        """This method returns the string representation of an Input.
+        """String representation of an Input.
         
         Returns:
             str: The string representation of this class.
         """
 
-        return f'id: {self._id}\n' + \
-               f'weight: {self._weight}\n' + \
-               f'quality: {self._quality}\n' + \
-               f'time: {self._time}\n'
+        return (
+            f'id: {self._id}\n'
+            + f'weight: {self._weight}\n'
+            + f'quality: {self._quality}\n'
+            + f'time: {self._time}\n'
+        )
 
     @property
     def id(self: 'Input') -> int:
-        """int: The input identifier."""
+        """The input identifier."""
         return self._id
 
     @id.setter
@@ -53,7 +60,7 @@ class Input:
 
     @property
     def weight(self: 'Input') -> float:
-        """float: The input ore weight."""
+        """The input ore weight."""
         return self._weight
 
     @weight.setter
@@ -62,7 +69,7 @@ class Input:
 
     @property
     def quality(self: 'Input') -> List[Quality]:
-        """List[Quality]: List with the quality parameters."""
+        """List with the quality parameters."""
         return self._quality
 
     @quality.setter
@@ -71,7 +78,7 @@ class Input:
 
     @property
     def time(self: 'Input') -> float:
-        """float: Time when input is available."""
+        """Time when input is available."""
         return self._time
 
     @time.setter

@@ -259,7 +259,7 @@ def print_usage(parms: Parameters) -> None:
         The operating guidelines.
     """
     usage: str = (
-        f"Usage: python3 src/main.py <input> <output> [options]\n"
+        f"Usage: python pyblend <input> <output> [options]\n"
         + f"    <input>  : Name of the problem input file.\n"
         + f"    <output> : Name of the (output) solution file.\n"
         + f"\nOptions:\n"
@@ -275,9 +275,9 @@ def print_usage(parms: Parameters) -> None:
         + f'        -samax <samax> : iterations before updating the temperature for Simulated Annealing (default: {parms["samax"]}).\n'
         + f'        -t0 <t0>       : initial temperature for the Simulated Annealing (default: {parms["t0"]}). \n'
         + f"\nExamples:\n"
-        + f"    python3 src/main.py instance_1.json out_1.json\n"
-        + f"    python3 src/main.py instance_1.json out_1.json -constructive premodel -seed 1\n"
-        + f"    python3 src/main.py instance_1.json out_1.json -algorithm sa -alpha 0.98 -samax 1000 -t0 1e5\n"
+        + f"    python pyblend instance_1.json out_1.json\n"
+        + f"    python pyblend instance_1.json out_1.json -constructive premodel -seed 1\n"
+        + f"    python pyblend instance_1.json out_1.json -algorithm sa -alpha 0.98 -samax 1000 -t0 1e5\n"
     )
 
     print(usage)

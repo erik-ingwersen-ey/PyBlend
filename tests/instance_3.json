@@ -18,11 +18,11 @@
       "qualityIni": [
         {
           "parameter": "Fe",
-          "value": 57.3
+          "value": 10.3
         },
         {
           "parameter": "SiO2",
-          "value": 5.3
+          "value": 2.3
         },
         {
           "parameter": "Al2O3",
@@ -34,11 +34,11 @@
         },
         {
           "parameter": "+31.5",
-          "value": 8
+          "value": 4
         },
         {
           "parameter": "-6.3",
-          "value": 20
+          "value": 40
         }
       ]
     },
@@ -122,8 +122,8 @@
       "rails": [
         2
       ],
-      "capacity": 40000,
-      "weightIni": 30000,
+      "capacity": 400000,
+      "weightIni": 100000,
       "qualityIni": [
         {
           "parameter": "Fe",
@@ -178,7 +178,7 @@
   "inputs": [
     {
       "id": 1,
-      "weight": 90000.0,
+      "weight": 0.0,
       "quality": [
         {
           "parameter": "Fe",
@@ -289,26 +289,26 @@
   "timeTravel": [
     [
       0.06,
-      0.11,
+      1.21,
       0.16,
-      0.21
+      0.08
     ],
     [
-      0.11,
+      1.21,
       0.06,
-      0.21,
+      0.08,
       0.16
     ],
     [
       0.16,
-      0.21,
+      0.08,
       0.06,
-      0.11
+      1.21
     ],
     [
-      0.21,
+      0.08,
       0.16,
-      0.11,
+      1.21,
       0.06
     ]
   ]

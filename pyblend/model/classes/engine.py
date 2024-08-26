@@ -2,9 +2,13 @@ from typing import List
 
 
 class Engine:
-    """This class represents an Engine or a Machine. The attributes indicate 
-    which rail the equipment is on, the yards to which it has access and its
-    working configuration, whether as a stacker, reclaimer or both.
+    """
+    Class representing an `Engine` or a Machine.
+
+    The attributes indicate which rail the equipment is on, the yards to
+    which it has access, and its working configuration, whether as a stacker,
+    reclaimer, or both.
+
     """
 
     def __init__(
@@ -16,20 +20,24 @@ class Engine:
         rail: int,
         yards: List[int]
     ):
-        """Instantiates a new Engine.
+        """Instantiates a new `Engine` class.
         
-        Args:
-            id (int): The Engine identifier.
-            speed_stack (float): The stacking speed of the engine. If this 
-                attribute is different from zero, then the equipment can 
-                perform the stacking function.
-            speed_reclaim (float): The reclaiming speed of the engine. If 
-                this attribute is different from zero, then the equipment 
-                can perform the reclaiming function.
-            pos_ini (int): The starting position of the engine.
-            rail (int): The rail to which the engine is attached.
-            yards (List[int]): List with the ore yards that the engine has 
-                access to.
+        Parameters
+        ----------
+        id : int
+            The Engine identifier.
+        speed_stack : float
+            The stacking speed of the engine. If this attribute is different from zero,
+            then the equipment can perform the stacking function.
+        speed_reclaim : float
+            The reclaiming speed of the engine. If this attribute is different from zero,
+            then the equipment can perform the reclaiming function.
+        pos_ini : int
+            The starting position of the engine.
+        rail : int
+            The rail to which the engine is attached.
+        yards : List[int]
+            List with the ore yards that the engine has access to.
         """
 
         self._id: int = id
@@ -40,22 +48,26 @@ class Engine:
         self._yards: List[int] = yards
 
     def __repr__(self: 'Engine') -> str:
-        """This method returns the string representation of an Engine.
+        """String representation of an Engine.
         
-        Returns:
-            str: The string representation of this class.
+        Returns
+        -------
+        str
+            The string representation of this class.
         """
 
-        return f'id: {self._id}\n' + \
-               f'speedStack: {self._speed_stack}\n' + \
-               f'speedReclaim: {self._speed_reclaim}\n' + \
-               f'posIni: {self._pos_ini}\n' + \
-               f'rail: {self._rail}\n' + \
-               f'yards: {self._yards}\n'
+        return (
+            f'id: {self._id}\n'
+            + f'speedStack: {self._speed_stack}\n'
+            + f'speedReclaim: {self._speed_reclaim}\n'
+            + f'posIni: {self._pos_ini}\n'
+            + f'rail: {self._rail}\n'
+            + f'yards: {self._yards}\n'
+        )
 
     @property
     def id(self: 'Engine') -> int:
-        """int: The Engine identifier."""
+        """The Engine identifier."""
         return self._id
 
     @id.setter
@@ -64,9 +76,11 @@ class Engine:
 
     @property
     def speed_stack(self: 'Engine') -> float:
-        """float: The stacking speed of the engine. If this attribute is 
-        different from zero, then the equipment can perform the stacking 
-        function.
+        """
+        The stacking speed of the engine.
+
+        If this attribute is different from zero,
+        then the equipment can perform the stacking function.
         """
         return self._speed_stack
 
@@ -76,9 +90,11 @@ class Engine:
 
     @property
     def speed_reclaim(self: 'Engine') -> float:
-        """float: The reclaiming speed of the engine. If this attribute is 
-        different from zero, then the equipment can perform the reclaiming 
-        function.
+        """
+        The reclaiming speed of the engine.
+
+        If this attribute is different from zero,
+        then the equipment can perform the reclaiming function.
         """
         return self._speed_reclaim
 
@@ -88,7 +104,7 @@ class Engine:
 
     @property
     def pos_ini(self: 'Engine') -> int:
-        """int: The starting position of the engine."""
+        """The starting position of the engine."""
         return self._pos_ini
 
     @pos_ini.setter
@@ -97,7 +113,7 @@ class Engine:
 
     @property
     def rail(self: 'Engine') -> int:
-        """int: The rail to which the engine is attached."""
+        """The rail to which the engine is attached."""
         return self._rail
 
     @rail.setter
@@ -106,7 +122,7 @@ class Engine:
 
     @property
     def yards(self: 'Engine') -> List[int]:
-        """List[int]: List with the ore yards that the engine has access to."""
+        """List with the ore yards that the engine has access to."""
         return self._yards
 
     @yards.setter

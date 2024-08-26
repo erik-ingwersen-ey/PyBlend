@@ -4,9 +4,9 @@
     1000,
     1
   ],
-  "objective": 11670000.000000004,
+  "objective": 31351019999.999943,
   "gap": [
-    0.29
+    0.26
   ],
   "stacks": [],
   "reclaims": [
@@ -19,19 +19,27 @@
       "output": 1
     },
     {
-      "weight": 120000.0,
+      "weight": 10000.0,
       "stockpile": 1,
       "engine": 1,
-      "start_time": 69.4,
-      "duration": 92.31,
+      "start_time": 70.5,
+      "duration": 7.69,
       "output": 1
     },
     {
-      "weight": 90000.0,
+      "weight": 100000.0,
       "stockpile": 3,
       "engine": 2,
       "start_time": 0.06,
-      "duration": 69.23,
+      "duration": 76.92,
+      "output": 1
+    },
+    {
+      "weight": 100000.0,
+      "stockpile": 4,
+      "engine": 2,
+      "start_time": 78.19,
+      "duration": 76.92,
       "output": 1
     }
   ],
@@ -39,11 +47,11 @@
     {
       "weight": 300000,
       "start_time": 0.06,
-      "duration": 161.65,
+      "duration": 155.05,
       "quality": [
         {
           "parameter": "Fe",
-          "value": 57.0,
+          "value": 55.1,
           "minimum": 57,
           "maximum": 100,
           "goal": 57,
@@ -51,7 +59,7 @@
         },
         {
           "parameter": "SiO2",
-          "value": 4.91,
+          "value": 4.26,
           "minimum": 0,
           "maximum": 5.8,
           "goal": 5.8,
@@ -59,7 +67,7 @@
         },
         {
           "parameter": "Al2O3",
-          "value": 4.74,
+          "value": 5.02,
           "minimum": 0,
           "maximum": 4.9,
           "goal": 4.9,
@@ -75,7 +83,7 @@
         },
         {
           "parameter": "+31.5",
-          "value": 6.2,
+          "value": 3.87,
           "minimum": 0,
           "maximum": 10,
           "goal": 10,
@@ -83,7 +91,7 @@
         },
         {
           "parameter": "-6.3",
-          "value": 18.5,
+          "value": 17.33,
           "minimum": 0,
           "maximum": 25,
           "goal": 25,
