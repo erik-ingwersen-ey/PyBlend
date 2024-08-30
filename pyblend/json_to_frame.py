@@ -16,21 +16,22 @@ def create_formatted_excel(
     outputs_df_out: pd.DataFrame,
     file_name: str = "optimization_output.xlsx",
 ):
-    """
-    Create a formatted Excel file from the provided DataFrames.
+    """Create a formatted Excel file from the provided DataFrames.
 
-    Parameters
-    ----------
-    stockpiles_df : pd.DataFrame
-        A `pandas.DataFrame` containing stockpile information.
-    engines_df : pd.DataFrame
-        A `pandas.DataFrame` containing engine information.
-    operations_df : pd.DataFrame
-        A `pandas.DataFrame` containing operation details.
-    outputs_df_out : pd.DataFrame
-        A `pandas.DataFrame` containing output information from the optimization.
-    file_name : str, default='optimization_output.xlsx'
-        Name of the Excel file to be created.
+    This function takes multiple pandas DataFrames containing stockpile,
+    engine, operation, and output information, and creates a well-formatted
+    Excel file. Each DataFrame is added to a separate sheet within the Excel
+    workbook. The function allows for customization of formatting, such as
+    alternating row colors and bolding the last row of data.
+
+    Args:
+        stockpiles_df (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
+        engines_df (pd.DataFrame): A `pandas.DataFrame` containing engine information.
+        operations_df (pd.DataFrame): A `pandas.DataFrame` containing operation details.
+        outputs_df_out (pd.DataFrame): A `pandas.DataFrame` containing output information from the
+            optimization.
+        file_name (str?): Name of the Excel file to be created. Defaults to
+            'optimization_output.xlsx'.
     """
     # Create a new workbook and remove the default sheet
     wb = Workbook()
@@ -44,23 +45,22 @@ def create_formatted_excel(
         color_by_engine=False,
         bold_last_row=False,
     ):
-        """
-        Helper function to add a DataFrame to an Excel sheet with formatting.
+        """Add a DataFrame to an Excel sheet with optional formatting.
 
-        Parameters
-        ----------
-        wb : Workbook
-            The workbook to which the sheet is added.
-        df : pd.DataFrame
-            The DataFrame to be added.
-        sheet_name : str
-            The name of the sheet.
-        color_alternating_rows : bool, default=False
-            Whether to color rows with alternating colors.
-        color_by_engine : bool, default=False
-            Whether to color rows by different engines.
-        bold_last_row : bool, default=False
-            Whether to make the last row bold.
+        This helper function creates a new sheet in the provided workbook and
+        populates it with the data from the given DataFrame. It supports various
+        formatting options, including alternating row colors, coloring by engine
+        type, and bolding the last row. The function also adjusts column widths
+        based on the content of the cells and hides gridlines for a cleaner
+        appearance.
+
+        Args:
+            wb (Workbook): The workbook to which the sheet is added.
+            df (pd.DataFrame): The DataFrame to be added.
+            sheet_name (str): The name of the sheet.
+            color_alternating_rows (bool?): Whether to color rows with alternating colors. Defaults to False.
+            color_by_engine (bool?): Whether to color rows by different engines. Defaults to False.
+            bold_last_row (bool?): Whether to make the last row bold. Defaults to False.
         """
         ws = wb.create_sheet(title=sheet_name)
         colors = ["B9C8DE", "DEE6F0"]  # Rotation colors for alternating rows
@@ -153,23 +153,28 @@ def explode_quality_rows(
     df: pd.DataFrame,
     quality_col_prefix: str = "quality_",
 ) -> pd.DataFrame:
-    """
-    Explode the `'quality_*'` columns into rows.
+    """Explode the 'quality_*' columns into rows.
 
-    Parameters
-    ----------
-    df : pd.DataFrame
-        The dataframe with the output specifications with the quality columns
-        that contain dictionaries of quality parameters to be extracted.
-    quality_col_prefix : str, default='quality_'
-        The prefix of the quality columns that contain the output pile specifications
-        that need to be extracted into different columns.
+    This function takes a DataFrame containing columns that start with a
+    specified prefix (default is 'quality_') and transforms those columns,
+    which contain dictionaries of quality parameters, into separate rows.
+    Each dictionary will be expanded into its own set of columns, while the
+    other columns in the DataFrame will be repeated for each exploded row.
+    This is useful for normalizing data structures where quality parameters
+    are stored in a nested format.
 
-    Returns
-    -------
-    pd.DataFrame
-        The `pandas.DataFrame` with the quality dictionaries extracted into
-        new columns.
+    Args:
+        df (pd.DataFrame): The dataframe with the output specifications containing
+            the quality columns that hold dictionaries of quality parameters to be
+            extracted.
+        quality_col_prefix (str?): The prefix of the quality columns that
+            contain the output specifications to be extracted into different
+            columns.
+            Defaults to 'quality_'.
+
+    Returns:
+        pd.DataFrame: A new DataFrame with the quality dictionaries extracted into
+            new columns, where each dictionary is represented as a separate row.
     """
     # Create a new DataFrame to store exploded rows
     exploded_df = pd.DataFrame()
@@ -212,21 +217,25 @@ def explode_quality_rows(
 def assign_engines_to_stockpiles(
     stockpiles_df: pd.DataFrame, engines_df: pd.DataFrame
 ) -> pd.DataFrame:
-    """
-    Assign engines to stockpiles based on matching yards and rails.
+    """Assign engines to stockpiles based on matching yards and rails.
 
-    Parameters
-    ----------
-    stockpiles_df : pd.DataFrame
-        A `pandas.DataFrame` containing stockpile information including
-        'rails' and 'yard'.
-    engines_df : pd.DataFrame
-        A `pandas.DataFrame` containing engine information including 'yards' and 'rail'.
+    This function takes two pandas DataFrames: one containing stockpile
+    information and the other containing engine information. It iterates
+    through the stockpiles and assigns engines to each stockpile based on
+    whether the stockpile's yard matches any of the engine's yards and if
+    the engine's rail is present in the stockpile's rails. The result is an
+    updated stockpile DataFrame that includes an 'engines' column, which
+    lists the IDs of the assigned engines for each stockpile.
 
-    Returns
-    -------
-    pd.DataFrame
-        Updated `stockpiles_df` with an 'engines' column listing the assigned engine IDs.
+    Args:
+        stockpiles_df (pd.DataFrame): A `pandas.DataFrame` containing stockpile
+            information including 'rails' and 'yard'.
+        engines_df (pd.DataFrame): A `pandas.DataFrame` containing engine
+            information including 'yards' and 'rail'.
+
+    Returns:
+        pd.DataFrame: Updated `stockpiles_df` with an 'engines' column listing
+            the assigned engine IDs.
     """
     stockpiles_df["engines"] = [[] for _ in range(stockpiles_df.shape[0])]
 
@@ -245,21 +254,26 @@ def assign_engines_to_stockpiles(
 def extract_quality_ini_values(
     stockpiles_df: pd.DataFrame, quality_prefix: str = "qualityIni"
 ) -> pd.DataFrame:
-    """
-    Extract initial quality values from nested dictionaries in the stockpiles DataFrame
-    and add them as new columns.
+    """Extract initial quality values from nested dictionaries in the
+    stockpiles DataFrame.
 
-    Parameters
-    ----------
-    stockpiles_df : pd.DataFrame
-        A `pandas.DataFrame` containing stockpile information, including quality parameters.
-    quality_prefix : str, default='qualityIni'
-        Prefix used in column names for quality-related information.
+    This function processes a DataFrame containing stockpile information,
+    specifically focusing on columns that start with a specified prefix
+    related to quality parameters. It extracts the 'parameter' and 'value'
+    from these nested dictionaries and adds them as new columns to the
+    original DataFrame. The original quality columns are then removed from
+    the DataFrame, resulting in a cleaner structure that separates quality
+    data into individual columns.
 
-    Returns
-    -------
-    pd.DataFrame
-        Updated `stockpiles_df` with quality parameters extracted as individual columns.
+    Args:
+        stockpiles_df (pd.DataFrame): A `pandas.DataFrame` containing stockpile information,
+            including quality parameters.
+        quality_prefix (str?): Prefix used in column names for quality-related
+            information. Defaults to 'qualityIni'.
+
+    Returns:
+        pd.DataFrame: Updated `stockpiles_df` with quality parameters extracted as individual
+            columns.
     """
     quality_cols = stockpiles_df.columns[
         stockpiles_df.columns.str.startswith(quality_prefix)
@@ -284,20 +298,24 @@ def extract_quality_ini_values(
 def process_stockpiles_and_engines(
     stockpiles_df: pd.DataFrame, engines_df: pd.DataFrame
 ) -> pd.DataFrame:
-    """
-    Process stockpiles and engines by assigning engines to stockpiles and extracting initial quality values.
+    """Process stockpiles and engines by assigning engines to stockpiles and
+    extracting initial quality values.
 
-    Parameters
-    ----------
-    stockpiles_df : pd.DataFrame
-        A `pandas.DataFrame` containing stockpile information.
-    engines_df : pd.DataFrame
-        A `pandas.DataFrame` containing engine information.
+    This function takes two pandas DataFrames as input: one containing
+    information about stockpiles and the other containing information about
+    engines. It processes these DataFrames by assigning engines to the
+    respective stockpiles based on certain criteria and then extracts the
+    initial quality values from the stockpiles. The result is a modified
+    DataFrame that includes the assigned engines and the extracted quality
+    values.
 
-    Returns
-    -------
-    pd.DataFrame
-        Processed `stockpiles_df` with engines assigned and quality values extracted.
+    Args:
+        stockpiles_df (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
+        engines_df (pd.DataFrame): A `pandas.DataFrame` containing engine information.
+
+    Returns:
+        pd.DataFrame: Processed `stockpiles_df` with engines assigned and quality values
+            extracted.
     """
     stockpiles_df = assign_engines_to_stockpiles(stockpiles_df, engines_df)
     stockpiles_df = extract_quality_ini_values(stockpiles_df)
@@ -305,23 +323,21 @@ def process_stockpiles_and_engines(
 
 
 def travel_time(grp: pd.DataFrame) -> pd.DataFrame:
-    """
-    Calculate the travel time between consecutive events within a group.
+    """Calculate the travel time between consecutive events within a group.
 
-    This function calculates the time between the end of one event and the start of the next event
-    within a grouped DataFrame. If the group contains only one event, the travel time is set to 0.
+    This function computes the duration between the end of one event and the
+    start of the next event in a grouped DataFrame. If the group consists of
+    only one event, the travel time is set to 0. The function expects the
+    DataFrame to be pre-grouped by a relevant key and to contain at least
+    'start_time' and 'end_time' columns. The resulting DataFrame will have a
+    single column named 'travel_time' that reflects the calculated travel
+    times, with the index matching that of the input DataFrame.
 
-    Parameters
-    ----------
-    grp : pd.DataFrame
-        A `pandas.DataFrame` containing at least 'start_time' and 'end_time'
-        columns. The DataFrame is expected to be pre-grouped by a relevant key
-        before being passed to this function.
+    Args:
+        grp (pd.DataFrame): A `pandas.DataFrame` containing at least 'start_time' and 'end_time'
 
-    Returns
-    -------
-    pd.DataFrame
-        A `pandas.DataFrame` with a single column 'travel_time',
+    Returns:
+        pd.DataFrame: A `pandas.DataFrame` with a single column 'travel_time',
         containing the calculated travel times between consecutive events.
         The index of the returned DataFrame matches the input DataFrame.
     """
@@ -345,6 +361,25 @@ def travel_time(grp: pd.DataFrame) -> pd.DataFrame:
 def generate_excel_from_json_in_out(
     json_input_path: str, json_output_path: str, excel_path: str
 ):
+    """Generate an Excel file from JSON input and output data.
+
+    This function reads JSON data from specified input and output files,
+    processes the data to create various DataFrames, and then compiles the
+    results into an Excel file. The function handles multiple aspects of the
+    data, including stockpiles, engines, and operations, and formats the
+    final output for easy analysis. The resulting Excel file is saved at the
+    specified path.
+
+    Args:
+        json_input_path (str): The file path to the input JSON file containing instance data.
+        json_output_path (str): The file path to the output JSON file containing results data.
+        excel_path (str): The file path where the generated Excel file will be saved.
+
+    Returns:
+        None: This function does not return a value; it generates an Excel file as
+            output.
+    """
+
     Path(excel_path).parent.mkdir(exist_ok=True, parents=True)
     excel_path = str(Path(excel_path).with_suffix(".xlsx"))
 
