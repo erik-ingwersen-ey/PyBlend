@@ -38,10 +38,11 @@ class Input:
     def __repr__(self: 'Input') -> str:
         """String representation of an Input.
         
-        Returns:
-            str: The string representation of this class.
+        Returns
+        -------
+        str
+            The string representation of this class.
         """
-
         return (
             f'id: {self._id}\n'
             + f'weight: {self._weight}\n'

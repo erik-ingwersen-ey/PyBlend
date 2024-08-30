@@ -123,30 +123,27 @@ class Solution:
             - The third element is a dictionary of recoveries with request IDs as keys
               and lists of reclaimed weights as values.
         """
-
         self._objective = objective[0]
         self._weights = objective[1]
         self._inputs = objective[2]
 
-    def update_cost(self: 'Solution', id: int) -> None:
-        """
-        Calculate and update the solution cost.
+    def update_cost(self: 'Solution', _id: int) -> None:
+        """Calculate and update the solution cost.
 
         Parameters
         ----------
-        id : int
+        _id : int
             The request identifier.
         """
+        self._cost = self.work_time(_id)[1]
 
-        self._cost = self.work_time(id)[1]
-
-    def work_time(self: 'Solution', id: int) -> Tuple[float, float]:
+    def work_time(self: 'Solution', _id: int) -> Tuple[float, float]:
         """
         Calculate and return the start and end times for a request.
 
         Parameters
         ----------
-        id : int
+        _id : int
             The request identifier.
 
         Returns
@@ -166,19 +163,19 @@ class Solution:
 
         # calculates the time when the request was initiated
         start: float = min(
-            [item['start_time'] 
-             for item in self._reclaims if item['output'] == id]
+            [item['start_time']
+             for item in self._reclaims if item['output'] == _id]
         )
 
         # calculates the time when the request was completed
         end: float = max(
             [item['start_time'] + item['duration']
-             for item in self._reclaims if item['output'] == id]
+             for item in self._reclaims if item['output'] == _id]
         )
 
         return start, end
 
-    def write(self: 'Solution', file_path: str, time) -> None:
+    def write(self: 'Solution', file_path: str, time: float) -> None:
         """
         Write the solution to a JSON file.
 
@@ -194,7 +191,6 @@ class Solution:
         AssertionError
             If this method is called before deliveries are set.
         """
-
         assert self._has_deliveries, 'calling write() before mandatory call to set_deliveries().'
 
         result: Result = {
@@ -206,16 +202,11 @@ class Solution:
             'outputs': self._deliveries,
             'time': time,
         }
-
-        # os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, 'w') as file:
             ujson.dump(result, file, indent=2)
 
     def reset(self: 'Solution') -> None:
-        """
-        Reset the solution to avoid the need to create another object.
-        """
-
+        """Reset the solution to avoid the need to create another object."""
         self._stacks = []
         self._reclaims = []
         self._deliveries = []
@@ -300,6 +291,8 @@ class Solution:
     @property
     def cost(self: 'Solution') -> float:
         """The solution cost."""
+        # base_cost = self._cost
+        # time_difference_penalty = self.calculate_time_difference_penalty()
         return self._cost
 
     @cost.setter

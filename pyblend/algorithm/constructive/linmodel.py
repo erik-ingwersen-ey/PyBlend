@@ -355,9 +355,15 @@ class LinModel:
             for i in range(self._p)
         )
 
+        # Minimize the total scheduling time
+        total_time: LinExpr = xsum(
+            self._x[i, k] * self._w_x[i, k] for i in range(self._p) for k in
+            range(self._r)
+        )
+
         # objective function
         self._omp += (
-            self._w_1 * d_limit + self._w_2 * d_goal + r_scheduling + i_scheduling
+            self._w_1 * d_limit + self._w_2 * d_goal + r_scheduling + i_scheduling + total_time * 1_000
         )
 
     def __normalize(self: "LinModel", j: int, k: int, bound: str) -> float:
