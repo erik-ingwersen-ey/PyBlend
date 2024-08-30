@@ -109,19 +109,24 @@ class Solution:
             )
 
     def set_objective(self: 'Solution', objective: Objective) -> None:
-        """
-        Sets the objectives for the Machine Scheduling Problem from the results
-        of the Ore Mixing Problem.
+        """Set the objectives for the Machine Scheduling Problem based on the
+        results
+        of the Ore Mixing Problem.  This method takes an objective tuple that
+        contains the objective value, a dictionary of stockpile weights, and a
+        dictionary of recoveries. It assigns these values to the instance
+        variables for further processing in the scheduling problem.
 
-        Parameters
-        ----------
-        objective : Tuple[Optional[float], Dict[str, List[float]], Dict[str, List[float]]]
-            A tuple where:
-            - The first element is the objective value of the linear model.
-            - The second element is a dictionary of entries with stockpile IDs as keys
-              and lists of stacked weights as values.
-            - The third element is a dictionary of recoveries with request IDs as keys
-              and lists of reclaimed weights as values.
+        Args:
+            objective (Tuple[Optional[float], Dict[str, List[float]],
+                             Dict[str, List[float]]]): A tuple containing:
+                - The first element is the objective value of the linear model.
+                - The second element is a dictionary with stockpile IDs as keys
+                and lists of stacked weights as values.
+                - The third element is a dictionary with request IDs as keys
+                and lists of reclaimed weights as values.
+
+        Returns:
+            None: This function does not return a value.
         """
         self._objective = objective[0]
         self._weights = objective[1]
@@ -130,33 +135,30 @@ class Solution:
     def update_cost(self: 'Solution', _id: int) -> None:
         """Calculate and update the solution cost.
 
-        Parameters
-        ----------
-        _id : int
-            The request identifier.
+        This method computes the cost associated with a specific request
+        identified by the given `_id`. It retrieves the work time for the
+        request and updates the internal cost attribute accordingly.
+
+        Args:
+            _id (int): The request identifier.
         """
         self._cost = self.work_time(_id)[1]
 
     def work_time(self: 'Solution', _id: int) -> Tuple[float, float]:
-        """
-        Calculate and return the start and end times for a request.
+        """Calculate and return the start and end times for a request.
 
-        Parameters
-        ----------
-        _id : int
-            The request identifier.
+        This method computes the start and end times based on the request
+        identifier provided. It retrieves the relevant data from the internal
+        reclaim list and calculates the minimum start time and maximum end time
+        for the specified request.
 
-        Returns
-        -------
-        Tuple[float, float]
-            A tuple where:
-            - The first element is the start time.
-            - The second element is the end time.
+        Args:
+            _id (int): The request identifier.
 
-        Raises
-        ------
-        AssertionError
-            If the reclaim list is empty when this method is called.
+        Returns:
+            Tuple[float, float]: A tuple where:
+                - The first element is the start time.
+                - The second element is the end time.
         """
 
         assert self._reclaims, 'calling work_time() for an empty reclaim list.'
@@ -176,20 +178,17 @@ class Solution:
         return start, end
 
     def write(self: 'Solution', file_path: str, time: float) -> None:
-        """
-        Write the solution to a JSON file.
+        """Write the solution to a JSON file.
 
-        Parameters
-        ----------
-        file_path : str
-            The output path.
-        time : float
-            The time when the solution was written.
+        This method writes the current state of the solution, including problem
+        information, objective, gap, stacks, reclaims, and deliveries, to a
+        specified JSON file. It also records the time when the solution was
+        written. Before calling this method, it is mandatory to set deliveries;
+        otherwise, an assertion error will be raised.
 
-        Raises
-        ------
-        AssertionError
-            If this method is called before deliveries are set.
+        Args:
+            file_path (str): The output path where the JSON file will be saved.
+            time (float): The time when the solution was written.
         """
         assert self._has_deliveries, 'calling write() before mandatory call to set_deliveries().'
 
@@ -206,7 +205,15 @@ class Solution:
             ujson.dump(result, file, indent=2)
 
     def reset(self: 'Solution') -> None:
-        """Reset the solution to avoid the need to create another object."""
+        """Reset the solution to its initial state.
+
+        This method clears all internal data structures used by the solution,
+        including the stacks, reclaims, and deliveries. It is useful for
+        reinitializing the object without the need to create a new instance.
+
+        Returns:
+            None: This method does not return any value.
+        """
         self._stacks = []
         self._reclaims = []
         self._deliveries = []
@@ -290,7 +297,15 @@ class Solution:
 
     @property
     def cost(self: 'Solution') -> float:
-        """The solution cost."""
+        """Retrieve the solution cost.
+
+        This method returns the cost associated with the solution. The cost is a
+        predefined attribute of the instance and may include various factors
+        that contribute to the overall cost of the solution.
+
+        Returns:
+            float: The cost of the solution.
+        """
         # base_cost = self._cost
         # time_difference_penalty = self.calculate_time_difference_penalty()
         return self._cost
