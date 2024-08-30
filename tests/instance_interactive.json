@@ -212,8 +212,8 @@
       "rails": [
         2
       ],
-      "capacity": 45000,
-      "weightIni": 45000,
+      "capacity": 0,
+      "weightIni": 0,
       "qualityIni": [
         {
           "parameter": "Fe",
@@ -328,8 +328,8 @@
         1,
         2
       ],
-      "capacity": 47500,
-      "weightIni": 47500,
+      "capacity": 0,
+      "weightIni": 0,
       "qualityIni": [
         {
           "parameter": "Fe",
@@ -502,8 +502,8 @@
         1,
         2
       ],
-      "capacity": 65000,
-      "weightIni": 65000,
+      "capacity": 30000,
+      "weightIni": 30000,
       "qualityIni": [
         {
           "parameter": "Fe",
@@ -531,8 +531,8 @@
         1,
         2
       ],
-      "capacity": 67500,
-      "weightIni": 67500,
+      "capacity": 0,
+      "weightIni": 0,
       "qualityIni": [
         {
           "parameter": "Fe",
@@ -651,7 +651,7 @@
     {
       "id": 1,
       "destination": 1,
-      "weight": 500000,
+      "weight": 550000,
       "quality": [
         {
           "parameter": "Fe",

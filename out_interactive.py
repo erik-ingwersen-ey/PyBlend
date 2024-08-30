@@ -1,5 +1,7 @@
 from __future__ import annotations
-from typing import List, Dict, Any
+
+import re
+from typing import List, Dict, Any, Iterable
 import subprocess
 import logging
 from pathlib import Path
@@ -9,6 +11,7 @@ import numpy as np
 import pandas as pd
 
 import xlwings as xw
+from matplotlib import pyplot as plt
 
 
 def check_is_file(*filepaths):
@@ -27,16 +30,131 @@ def check_is_file(*filepaths):
         raise FileNotFoundError(exception_message)
 
 
-# Helper function to autofit column widths with a minimum width
-def autofit_columns(ws):
-    for col in ws.columns:
-        max_length = 0
-        column = col[0].column_letter  # Get the column name
-        for cell in col:
-            if cell.value:
-                max_length = max(max_length, len(str(cell.value)))
-        adjusted_width = max(max_length + 2, 10)  # Minimum width set to 10
-        ws.column_dimensions[column].width = adjusted_width
+def is_integer(value):
+    if isinstance(value, int):
+        return True
+    if isinstance(value, str):
+        if all(c.isnumeric() for c in value) or re.match(r"\d+\.0+[^1-9]$", value):
+            return True
+        return False
+
+    if isinstance(value, float):
+        return int(value) == value
+
+    if isinstance(value, Iterable):
+        return all(is_integer(v) for v in value)
+    return False
+
+
+def autofit_columns_from_sheet(sheet, min_width=10):
+    """
+    Autofit all columns in an Excel sheet.
+
+    Parameters
+    ----------
+    sheet : xlwings.Sheet
+        The sheet where columns need to be autofit.
+    min_width : int, default=10
+        The minimum width for any column.
+    """
+    # Get the last used column in the sheet
+    last_used_column = sheet.used_range.last_cell.column
+
+    # Loop through each column from the first to the last used column
+    for col in range(1, last_used_column + 1):
+        column_range = sheet.range(f"{xw.utils.col_name(col)}:{xw.utils.col_name(col)}")
+        column_range.autofit()
+
+        # Check if the autofit width is less than the minimum width
+        if column_range.column_width < min_width:
+            column_range.column_width = min_width
+
+
+def format_excel_sheet(sheet: xw.Sheet):
+    """
+    Format all used cells in an Excel sheet.
+
+    Function sets specific styles for header, rows with alternating colors,
+    and a distinct style for the last row.
+
+    Parameters
+    ----------
+    sheet : xlwings.Sheet
+        The sheet to be formatted.
+    """
+    sheet.used_range.clear_formats()
+
+    # Get last used row and column
+    first_column = sheet.used_range.columns[0].column
+    first_row = sheet.used_range.columns[0].row
+    last_column = sheet.used_range.last_cell.column
+    last_row = sheet.used_range.last_cell.row
+    first_column_name = xw.utils.col_name(first_column)
+    last_column_name = xw.utils.col_name(last_column)
+
+    # Formatting for the header row
+    header_range = sheet.range(f"{first_column_name}{first_row}", f"{last_column_name}{first_row}")
+
+    header_range.color = "#5B80B8"  # Fill color
+    header_range.api.Font.Color = 0xFFFFFF  # Font color (White)
+    header_range.api.Font.Bold = True
+    header_range.api.Font.Size = 11
+    header_range.api.Font.Name = "Calibri"
+    header_range.api.HorizontalAlignment = xw.constants.HAlign.xlHAlignCenter
+    header_range.api.Borders(xw.constants.BordersIndex.xlEdgeBottom).LineStyle = xw.constants.LineStyle.xlContinuous
+    header_range.api.Borders(xw.constants.BordersIndex.xlEdgeBottom).Color = 0xFFFFFF  # White
+    header_range.api.Borders(xw.constants.BordersIndex.xlEdgeBottom).Weight = xw.constants.BorderWeight.xlThick
+
+    # Formatting for all row cells
+    for row in range(2, last_row):  # Start from 2 to avoid header row
+        row_range = sheet.range(f"{first_column_name}{row}", f"{last_column_name}{row}")
+        row_range.api.Font.Size = 11
+        row_range.api.Font.Name = "Calibri"
+        row_range.api.Font.Color = 0x000000  # Black
+        row_range.color = "#B9C8DE" if row % 2 == 0 else "#DEE6F0"
+        row_range.api.HorizontalAlignment = xw.constants.HAlign.xlHAlignCenter
+        row_range.api.Borders(xw.constants.BordersIndex.xlEdgeBottom).LineStyle = xw.constants.LineStyle.xlContinuous
+        row_range.api.Borders(xw.constants.BordersIndex.xlEdgeBottom).Color = 0xFFFFFF  # White
+        row_range.api.Borders(xw.constants.BordersIndex.xlEdgeBottom).Weight = xw.constants.BorderWeight.xlThin
+
+    # Formatting for the last row
+    last_row_range = sheet.range(f"{first_column_name}{last_row}", f"{last_column_name}{last_row}")
+    last_row_range.color = "#4F81BD"
+    last_row_range.api.Font.Color = 0xFFFFFF  # White
+    last_row_range.api.Font.Bold = True
+    last_row_range.api.Font.Size = 11
+    last_row_range.api.Font.Name = "Calibri"
+    last_row_range.api.HorizontalAlignment = xw.constants.HAlign.xlHAlignCenter
+    last_row_range.api.Borders(xw.constants.BordersIndex.xlEdgeTop).LineStyle = xw.constants.LineStyle.xlDouble
+    last_row_range.api.Borders(xw.constants.BordersIndex.xlEdgeTop).Color = 0xFFFFFF  # White
+    last_row_range.api.Borders(xw.constants.BordersIndex.xlEdgeTop).Weight = xw.constants.BorderWeight.xlThick
+
+
+def format_integer_columns(sheet: xw.Sheet):
+    """
+    Format columns in an Excel sheet where all values are integers.
+
+    Function sets the number format to include a thousand separator
+    and zero decimal places.
+
+    Parameters
+    ----------
+    sheet : xlwings.Sheet
+        The sheet to be formatted.
+    """
+    # Get the last used column and row in the sheet
+    last_column = sheet.used_range.last_cell.column
+    last_row = sheet.used_range.last_cell.row
+
+    # Iterate through each column in the used range
+    for col_index in range(1, last_column + 1):
+        column_range = sheet.range((2, col_index), (last_row, col_index))
+        values = column_range.value
+
+        # Check if all values in the column are integers
+        if all(is_integer(val) or val is None or val == "" for val in values):
+            # Apply a number format with thousands' separator and zero decimal places
+            column_range.number_format = "#,##0"
 
 
 # Convert input and output JSON files to dataframes
@@ -67,7 +185,7 @@ def explode_quality_rows(
 
     for index, row in df.iterrows():
         quality_dict_list = [
-            value for key, value in row.items() if key.startswith(quality_col_prefix)
+            value for key, value in row.items() if str(key).startswith(quality_col_prefix)
         ]
 
         # Convert the list of quality dictionaries into a DataFrame
@@ -176,7 +294,9 @@ def process_stockpiles_and_engines(
     stockpiles_df: pd.DataFrame, engines_df: pd.DataFrame
 ) -> pd.DataFrame:
     """
-    Process stockpiles and engines by assigning engines to stockpiles and extracting initial quality values.
+    Process stockpiles and engines.
+
+    Engines are assigned to stockpiles and initial quality values are extracted.
 
     Parameters
     ----------
@@ -332,9 +452,10 @@ def json_input_output_to_excel(
     reclaims_df = pd.DataFrame(output_data["reclaims"])
 
     outputs_df_out = pd.DataFrame(output_data["outputs"])
-    outputs_quality_df_out = pd.json_normalize(
-        outputs_df_out.pop("quality"), sep="_"
-    ).add_prefix("quality_")
+    outputs_quality_df_out = (
+        pd.json_normalize(outputs_df_out.pop("quality"), sep="_")
+        .add_prefix("quality_")
+    )
 
     outputs_df_out = pd.concat([outputs_df_out, outputs_quality_df_out], axis=1)
     outputs_df_out = explode_quality_rows(outputs_df_out, quality_col_prefix="quality_")
@@ -540,7 +661,8 @@ def run_pyblend_command(
     RuntimeError
         If the command fails to execute successfully.
     """
-    command = ["python", "./pyblend", input_json, output_json, "-algorithm", algorithm]
+    pyblend_path = str(Path(__file__).parent.joinpath("./pyblend").resolve())
+    command = ["python", pyblend_path, input_json, output_json, "-algorithm", algorithm]
 
     try:
         result = subprocess.run(command, check=True, capture_output=True, text=True)
@@ -553,16 +675,9 @@ def run_pyblend_command(
 class ExcelDataExtractor:
     """Class for extracting data from Excel sheets using xlwings.
 
-    Attributes
-    ----------
-    workbook_path : str
-        The path to the Excel workbook.
-    sheet_name : str
-        The name of the sheet from which data is extracted.
-
     Methods
     -------
-    extract_dataframe(range: str, expand: bool = True) -> pd.DataFrame:
+    extract_dataframe
         Extracts a DataFrame from a specified range in the sheet.
     """
 
@@ -586,8 +701,8 @@ class ExcelDataExtractor:
         ----------
         range : str
             The cell range to start extracting data from.
-        expand : bool, optional
-            Whether to expand the range to a table, by default True.
+        expand : bool, default=True
+            Whether to expand the range to a table.
 
         Returns
         -------
@@ -606,7 +721,7 @@ class StockpileProcessor:
 
     Methods
     -------
-    process(stockpiles: pd.DataFrame, yards: pd.DataFrame, rename_dict: Dict[str, str]) -> pd.DataFrame:
+    process
         Processes and merges stockpile and yard data.
     """
 
@@ -619,9 +734,9 @@ class StockpileProcessor:
         Parameters
         ----------
         stockpiles : pd.DataFrame
-            DataFrame containing stockpile information.
+            A `pandas.DataFrame` containing stockpile information.
         yards : pd.DataFrame
-            DataFrame containing yard information.
+            A `pandas.DataFrame` containing yard information.
         rename_dict : Dict[str, str]
             Dictionary for renaming columns.
 
@@ -643,7 +758,7 @@ class StockpileProcessor:
         Parameters
         ----------
         yards : pd.DataFrame
-            DataFrame containing yard information.
+            A `pandas.DataFrame` containing yard information.
 
         Returns
         -------
@@ -667,11 +782,12 @@ class StockpileProcessor:
 
 
 class TravelSpeedProcessor:
-    """Class for processing travel speed data.
+    """
+    Class for processing travel speed data.
 
     Methods
     -------
-    process(travel_speed: pd.DataFrame, rename_dict: Dict[str, str]) -> List[List[float]]:
+    process
         Processes travel speed data into a list of travel times.
     """
 
@@ -684,7 +800,7 @@ class TravelSpeedProcessor:
         Parameters
         ----------
         travel_speed : pd.DataFrame
-            DataFrame containing travel speed data.
+            A `pandas.DataFrame` containing travel speed data.
         rename_dict : Dict[str, str]
             Dictionary for renaming columns.
 
@@ -732,9 +848,9 @@ class InstanceDataBuilder:
         Parameters
         ----------
         stockpiles : pd.DataFrame
-            DataFrame containing stockpile information.
+            A `pandas.DataFrame` containing stockpile information.
         engines : pd.DataFrame
-            DataFrame containing engine information.
+            A `pandas.DataFrame` containing engine information.
         travel_times : List[List[float]]
             Nested list representing travel times between locations.
         inputs : List[Dict[str, Any]]
@@ -816,16 +932,77 @@ def update_excel_sheets(operations_df: pd.DataFrame, outputs_df_out: pd.DataFram
     operations_df = operations_df.set_index('Pilha')
 
     resultados_sheet.range("A1").value = operations_df
+    format_excel_sheet(resultados_sheet)
+    format_integer_columns(resultados_sheet)
+    autofit_columns_from_sheet(resultados_sheet)
+
     check_res_sheet.range("A1").value = outputs_df_out.fillna('').set_index(
         outputs_df_out.columns[0]
     )
 
 
+def generate_gantt_chart(operations_df, sheet):
+    operations_df = operations_df.iloc[:-1]
+    operations_df["Início"] = pd.to_timedelta(operations_df["Início"], unit="m")
+    operations_df["Fim"] = pd.to_timedelta(operations_df["Fim"], unit="m")
+    operations_df["Tempo Deslocamento (min)"] = (
+            pd.to_timedelta(operations_df["Tempo Deslocamento"], unit="m").dt.total_seconds()
+            / 60
+    )
+
+    # Convert the timedeltas to a more plot-friendly format by using hours as float
+    operations_df["Início (min)"] = operations_df["Início"].dt.total_seconds() / 60
+    operations_df["Fim (min)"] = operations_df["Fim"].dt.total_seconds() / 60
+    operations_df["Início (min)"] -= operations_df["Tempo Deslocamento (min)"]
+
+    # Create the Gantt plot with additional annotations
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Plot each operation and add text annotations
+    for idx, row in operations_df.iterrows():
+        ax.barh(
+            row["Veículo"],
+            row["Fim (min)"] - row["Início (min)"],
+            left=row["Início (min)"],
+        )
+        # Calculate the position for the text
+        mid_point = (row["Início (min)"] + row["Fim (min)"]) / 2
+        label = f'SP: {int(row["Pilha"])}'
+        ax.text(
+            mid_point,
+            row["Veículo"],
+            label,
+            ha="center",
+            va="center",
+            color="white",
+            fontsize=10,
+            usetex=False,
+        )
+
+    # Formatting the plot
+    ax.set_yticks([1, 2])
+    ax.set_ylim(0.5, None)
+    ax.set_xlabel("Tempo (minutos)")
+    ax.set_ylabel("Veículo", fontsize=16)
+    ax.set_title("Operações")
+
+    sheet.pictures.add(
+        fig,
+        name='Gantt',
+        update=True,
+        anchor=sheet.range((sheet.used_range.last_cell.row + 2, 1)),
+    )
+
+
 def main(
-    excel_filepath: str = "./out_interactive.xlsm",
+    excel_filepath: str = "out_interactive.xlsm",
     instance_json_path: str = "./tests/instance_interactive.json",
     output_json_path: str = "./out/json/out_interactive.json",
 ):
+    # excel_filepath = str(Path(excel_filepath).resolve())
+    instance_json_path = str(Path(__file__).parent.joinpath(instance_json_path).resolve())
+    output_json_path = str(Path(__file__).parent.joinpath(output_json_path).resolve())
+
     # Initialize the ExcelDataExtractor with workbook path and sheet name
     extractor = ExcelDataExtractor(excel_filepath, "Inputs")
 
@@ -914,18 +1091,23 @@ def main(
     with open(instance_json_path, "w") as json_file:
         json.dump(instance_data, json_file, indent=2)
 
-    run_pyblend_command(Path(instance_json_path).name, output_json_path)
+    run_pyblend_command(instance_json_path, output_json_path)
 
     operations_df, outputs_df_out = json_input_output_to_excel(
         instance_json_path,
         output_json_path,
     )
     update_excel_sheets(operations_df, outputs_df_out, excel_filepath)
+    extractor = ExcelDataExtractor(excel_filepath, "Resultados")
+    operations_df = extractor.extract_dataframe("A1")
+    sheet = extractor.sheet
+
+    generate_gantt_chart(operations_df, sheet)
 
 
 if __name__ == "__main__":
     main(
-        "./out_interactive.xlsm",
+        "out_interactive.xlsm",
         "./tests/instance_interactive.json",
         "./out/json/out_interactive.json",
     )

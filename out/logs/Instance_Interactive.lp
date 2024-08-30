@@ -34,7 +34,7 @@ weight_constr_90:  x_90 - y_09 <= 55000
 capacity_constr_10:  y_010 <= -0
 weight_constr_100:  x_100 - y_010 <= 45000
 capacity_constr_11:  y_011 <= -0
-weight_constr_110:  x_110 - y_011 <= 47500
+weight_constr_110:  x_110 - y_011 <= -0
 capacity_constr_12:  y_012 <= -0
 weight_constr_120:  x_120 - y_012 <= 52500
 capacity_constr_13:  y_013 <= -0
@@ -48,7 +48,7 @@ weight_constr_160:  x_160 - y_016 <= 62500
 capacity_constr_17:  y_017 <= -0
 weight_constr_170:  x_170 - y_017 <= 65000
 capacity_constr_18:  y_018 <= -0
-weight_constr_180:  x_180 - y_018 <= 67500
+weight_constr_180:  x_180 - y_018 <= -0
 capacity_constr_19:  y_019 <= -0
 weight_constr_190:  x_190 - y_019 <= 70000
 demand_constr_0:  x_00 + x_10 + x_20 + x_30 + x_40 + x_50 + x_60 + x_70 + x_80 + x_90
