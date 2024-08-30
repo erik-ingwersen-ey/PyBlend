@@ -36,12 +36,15 @@ class Input:
         self._time: float = time
 
     def __repr__(self: 'Input') -> str:
-        """String representation of an Input.
-        
-        Returns
-        -------
-        str
-            The string representation of this class.
+        """Return a string representation of the Input instance.
+
+        This method provides a detailed string representation of the Input
+        object, including its id, weight, quality, and time attributes. It is
+        useful for debugging and logging purposes to quickly understand the
+        state of an Input object.
+
+        Returns:
+            str: A formatted string representing the Input instance.
         """
         return (
             f'id: {self._id}\n'
