@@ -16,9 +16,15 @@ from pyblend.utils import handle_input_path, handle_output_path
 
 
 def main():
-    """
-    This is the main function, responsible for parsing the input,
-    instantiating moves and heuristics, and printing the results.
+    """Execute the main program logic for processing input and generating
+    output.
+
+    This function is responsible for parsing command-line arguments,
+    initializing parameters, and orchestrating the solution process for a
+    given problem. It sets up the necessary components such as the problem
+    instance, solution object, and model. It also handles the execution of
+    the specified algorithm if provided, and manages feedback mechanisms
+    based on the parameters set.
     """
     start_time = time.time()
     parms: Parameters = {
