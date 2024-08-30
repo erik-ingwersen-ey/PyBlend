@@ -168,26 +168,29 @@ class Constructive:
     def set_route(
         self: "Constructive", start_time: List[float], engine: Engine
     ) -> Route:
-        """
-        Define the operating order of each machine greedily.
+        """Define the operating order of each machine greedily.
 
-        It assigns all possible jobs to each machine, which must be further
-        refined by the `set_jobs` method.
+        This method assigns all possible jobs to each machine based on the
+        provided start times. The assignments are made in a greedy manner,
+        meaning that it will prioritize immediate availability of jobs for each
+        machine. The resulting assignments must be further refined using the
+        `set_jobs` method to ensure optimal job distribution.
 
-        Parameters
-        ----------
-        start_time : List[float]
-            List with the time when each engine can start a new task.
-        engine : Engine
-            The engine reference.
+        Args:
+            start_time (List[float]): A list containing the times at which
+                each engine can begin a new task.
+            engine (Engine): A reference to the engine that will be used
+                for job assignments.
 
-        Returns
-        -------
-        List[Tuple[float, int, int, str]]
-            Returns the list of tuples where the first element is the access time
-            of each machine to a stockpile. the second and third elements are
-            the engine ID and its position. The final element contains the engine
-            configurations.
+        Returns:
+            Route: A list of tuples where each tuple contains:
+                - The access time of each machine to a stockpile (float).
+                - The engine ID (int).
+                - The position of the engine (int).
+                - The engine configurations (str).
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
