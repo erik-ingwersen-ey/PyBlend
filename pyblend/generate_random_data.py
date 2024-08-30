@@ -7,7 +7,26 @@ from typing import Dict, List
 
 
 def validate_parameters(output_weight, quality_params):
-    """Validate the quality parameters and output weight."""
+    """Validate the quality parameters and output weight.
+
+    This function checks if the provided output weight is greater than zero
+    and verifies that each quality parameter contains valid values for
+    'minimum', 'maximum', 'goal', and 'importance'. It ensures that the goal
+    is within the specified range of minimum and maximum values, and that
+    the importance is a positive value. If any of these conditions are not
+    met, a ValueError is raised with an appropriate message.
+
+    Args:
+        output_weight (float): The weight of the output to be validated.
+        quality_params (list): A list of dictionaries containing quality
+            parameters. Each dictionary must include 'minimum', 'maximum',
+            'goal', and 'importance'.
+
+    Raises:
+        ValueError: If output_weight is less than or equal to 0.
+        ValueError: If any quality parameter is missing required fields
+            or if the values are not valid.
+    """
     if output_weight <= 0:
         raise ValueError("Output weight must be greater than 0.")
 
@@ -30,7 +49,23 @@ def validate_parameters(output_weight, quality_params):
 
 
 def generate_quality_values(quality_params):
-    """Generate random quality values for stockpiles based on output quality parameters."""
+    """Generate random quality values for stockpiles based on output quality
+    parameters.
+
+    This function takes a list of quality parameters, each containing a
+    minimum and maximum value, and generates random quality values for
+    stockpiles. For each parameter, a random value is generated within the
+    specified range and rounded to two decimal places. The resulting quality
+    values are returned as a list of dictionaries, where each dictionary
+    contains the parameter name and its corresponding generated value.
+
+    Args:
+        quality_params (list): A list of dictionaries, each containing 'parameter', 'minimum',
+            and 'maximum' keys.
+
+    Returns:
+        list: A list of dictionaries with generated quality values for each parameter.
+    """
     stock_quality = []
     for param in quality_params:
         quality = {
@@ -43,7 +78,30 @@ def generate_quality_values(quality_params):
 
 def generate_problem_data(num_stockpiles, num_engines, can_access_all, output_weight,
                           quality_params):
-    """Generate the problem data in JSON format based on the given parameters."""
+    """Generate problem data in JSON format based on the given parameters.
+
+    This function creates a structured representation of stockpiles and
+    engines for a problem instance. It validates the input parameters,
+    generates stockpile data with random weights and quality values, and
+    creates engine data with random attributes. Additionally, it computes
+    distances and travel times between stockpiles to facilitate further
+    processing.
+
+    Args:
+        num_stockpiles (int): The number of stockpiles to generate.
+        num_engines (int): The number of engines to generate.
+        can_access_all (bool): Indicates if all yards can be accessed by engines.
+        output_weight (float): The required total output weight from the stockpiles.
+        quality_params (list): A list of dictionaries containing quality parameters
+            for the stockpiles.
+
+    Returns:
+        dict: A dictionary containing the generated problem data in JSON format.
+
+    Raises:
+        ValueError: If the sum of all stockpile weights is not greater than the
+            specified output weight.
+    """
 
     # Validate the output weight and quality parameters
     validate_parameters(output_weight, quality_params)
@@ -147,6 +205,29 @@ def save_new_instance(
     folder_path: str | Path,
     name_pattern: str = "instance_*.json",
 ):
+    """Save a new instance of data to a specified folder with a unique
+    filename.
+
+    This function saves the provided data as a JSON file in the specified
+    folder. It generates a unique filename based on the provided name
+    pattern by enumerating existing files in the folder. If the folder does
+    not exist, it will be created. The function ensures that the new
+    filename does not conflict with existing files by incrementing the
+    enumeration until a unique name is found.
+
+    Args:
+        data (dict): The data to be saved as a JSON file.
+        folder_path (str | Path): The path to the folder where the file will be saved.
+        name_pattern (str?): The pattern for naming the file. Defaults to "instance_*.json".
+
+    Returns:
+        None: This function does not return a value; it saves the data to a file.
+
+    Raises:
+        ValueError: If the provided folder path points to an existing file instead of a
+            directory.
+    """
+
     _folder_path = Path(folder_path)
     if _folder_path.is_file():
         raise ValueError(
@@ -190,6 +271,27 @@ def recursive_glob(
     max_upper_dirs: int = 3,
     recursive: bool = True,
 ) -> Path | None:
+    """Find the first directory matching a pattern, searching recursively.
+
+    This function searches for directories that match a specified pattern
+    starting from an initial directory. If no matches are found, it will
+    move up to the parent directories (up to a specified limit) and continue
+    the search. If the `recursive` flag is set to True and the pattern does
+    not start with '**/', the function will prepend '**/' to the pattern to
+    enable recursive searching.
+
+    Args:
+        initial_directory (Path): The starting directory for the search.
+        pattern (str): The glob pattern to match against directory names.
+        max_upper_dirs (int?): The maximum number of parent directories
+            to search upwards. Defaults to 3.
+        recursive (bool?): Whether to search recursively. Defaults to True.
+
+    Returns:
+        Path | None: The first matching directory as a Path object, or None if
+        no matches are found.
+    """
+
     if recursive and not pattern.startswith("**/"):
         pattern = f"**/{pattern}"
 
@@ -213,6 +315,34 @@ def generate_and_save_random_input(
     quality_params: List[Dict[str, str | int | float]] | None = None,
     output_folder_path: str | Path | None = None,
 ):
+    """Generate and save random input data for stockpiles and engines.
+
+    This function generates random input data based on specified parameters
+    such as the number of stockpiles, engines, and output weight. It also
+    allows for the specification of quality parameters that define the
+    acceptable ranges for various materials. If no quality parameters are
+    provided, default values are used. The generated data is then saved to a
+    specified output folder. If the output folder does not exist, it will be
+    created.
+
+    Args:
+        num_stockpiles (int): The number of stockpiles to generate. Default is 20.
+        num_engines (int): The number of engines to generate. Default is 2.
+        output_weight (int): The total weight of the output data. Default is 500,000.
+        can_access_all (bool): Flag indicating if all stockpiles can be accessed. Default is True.
+        quality_params (List[Dict[str, str | int | float]] | None): A list of dictionaries defining
+            quality parameters for the generated data. Each dictionary should
+            contain keys for
+            'parameter', 'minimum', 'maximum', 'goal', and 'importance'. If None,
+            default parameters are used.
+        output_folder_path (str | Path | None): The path to the folder where the generated data will be saved.
+            If None, a default path will be determined.
+
+    Raises:
+        ValueError: If quality_params is provided but is not a list of dictionaries.
+        FileNotFoundError: If output_folder_path is not specified and cannot be found.
+    """
+
     if quality_params is None:
         _quality_params = [
             {"parameter": "Fe", "minimum": 60, "maximum": 100, "goal": 65, "importance": 10},
