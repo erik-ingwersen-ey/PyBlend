@@ -358,6 +358,28 @@ def json_input_output_to_excel(
     json_output_path: str | Path,
     excel_path: str | Path | None = None,
 ):
+    """Convert JSON input and output data to an Excel file.
+
+    This function reads JSON data from specified input and output paths,
+    processes the data into various DataFrames, and then saves the results
+    into an Excel file. If an Excel path is not provided, it generates a
+    default path based on the output JSON path. The function handles
+    multiple aspects of the data, including stockpiles, engines, and quality
+    metrics, and organizes them into a structured format suitable for
+    analysis.
+
+    Args:
+        json_input_path (str | Path): The path to the input JSON file containing instance data.
+        json_output_path (str | Path): The path to the output JSON file containing results.
+        excel_path (str | Path | None?): The path where the Excel file will be saved.
+            If None, a default path will be generated. Defaults to None.
+
+    Returns:
+        tuple: A tuple containing two DataFrames:
+            - operations_df: DataFrame with processed operations data.
+            - outputs_df_out: DataFrame with processed output data.
+    """
+
     check_is_file(json_input_path, json_output_path)
 
     if excel_path is None:
@@ -648,19 +670,19 @@ def run_pyblend_command(
 ) -> None:
     """Runs the pyblend command with the specified input and output JSON files.
 
-    Parameters
-    ----------
-    input_json : str
-        The input JSON file path.
-    output_json : str
-        The output JSON file path.
-    algorithm : str, optional
-        The algorithm to be used, by default "lahc".
+    This function constructs and executes a command to run the pyblend tool
+    using the provided input and output JSON file paths. It allows for an
+    optional algorithm parameter, which defaults to "lahc". The command is
+    executed in a subprocess, and if it fails, a RuntimeError is raised with
+    the error message.
 
-    Raises
-    ------
-    RuntimeError
-        If the command fails to execute successfully.
+    Args:
+        input_json (str): The input JSON file path.
+        output_json (str): The output JSON file path.
+        algorithm (str?): The algorithm to be used, by default "lahc".
+
+    Raises:
+        RuntimeError: If the command fails to execute successfully.
     """
     pyblend_path = str(Path(__file__).parent.joinpath("./pyblend").resolve())
     command = [
@@ -857,23 +879,23 @@ class InstanceDataBuilder:
     ) -> Dict[str, Any]:
         """Builds the instance data structure.
 
-        Parameters
-        ----------
-        stockpiles : pd.DataFrame
-            A `pandas.DataFrame` containing stockpile information.
-        engines : pd.DataFrame
-            A `pandas.DataFrame` containing engine information.
-        travel_times : List[List[float]]
-            Nested list representing travel times between locations.
-        inputs : List[Dict[str, Any]]
-            List of dictionaries representing input data.
-        outputs : List[Dict[str, Any]]
-            List of dictionaries representing output data.
+        This function constructs a comprehensive data structure that includes
+        information about stockpiles, engines, input data, and output data. It
+        processes the provided stockpile and engine data to create a structured
+        representation that can be used for further analysis or simulation. The
+        function also handles specific attributes of the stockpiles and engines,
+        ensuring that the resulting data structure is well-organized and ready
+        for use.
 
-        Returns
-        -------
-        Dict[str, Any]
-            The constructed instance data structure.
+        Args:
+            stockpiles (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
+            engines (pd.DataFrame): A `pandas.DataFrame` containing engine information.
+            travel_times (List[List[float]]): Nested list representing travel times between locations.
+            inputs (List[Dict[str, Any]]): List of dictionaries representing input data.
+            outputs (List[Dict[str, Any]]): List of dictionaries representing output data.
+
+        Returns:
+            Dict[str, Any]: The constructed instance data structure.
         """
         instance_data = {
             "info": ["Instance_Interactive", 1, 1],
@@ -983,6 +1005,25 @@ def update_excel_sheets(operations_df: pd.DataFrame, outputs_df_out: pd.DataFram
 
 
 def generate_gantt_chart(operations_df, sheet):
+    """Generate a Gantt chart from operations data.
+
+    This function takes a DataFrame containing operations data and generates
+    a Gantt chart visualizing the start and end times of each operation. The
+    DataFrame is expected to have columns for the start time, end time,
+    vehicle, and any necessary annotations. The Gantt chart is then added to
+    the specified Excel sheet.
+
+    Args:
+        operations_df (pd.DataFrame): A DataFrame containing operations data with columns
+            such as 'Início', 'Fim', 'Veículo', and 'Pilha'.
+        sheet (object): An object representing the Excel sheet where the Gantt chart will
+            be added.
+
+    Returns:
+        None: This function does not return a value but modifies the provided sheet by
+            adding the Gantt chart.
+    """
+
     operations_df = operations_df.iloc[:-1]
     operations_df["Início"] = pd.to_timedelta(operations_df["Início"], unit="m")
     operations_df["Fim"] = pd.to_timedelta(operations_df["Fim"], unit="m")
