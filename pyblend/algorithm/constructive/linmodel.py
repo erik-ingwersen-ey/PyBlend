@@ -355,12 +355,6 @@ class LinModel:
             for i in range(self._p)
         )
 
-        # Minimize the total scheduling time
-        total_time: LinExpr = xsum(
-            self._x[i, k] * self._w_x[i, k] for i in range(self._p) for k in
-            range(self._r)
-        )
-
         # objective function
         self._omp += (
             self._w_1 * d_limit

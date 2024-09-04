@@ -663,7 +663,18 @@ def run_pyblend_command(
         If the command fails to execute successfully.
     """
     pyblend_path = str(Path(__file__).parent.joinpath("./pyblend").resolve())
-    command = ["python", pyblend_path, input_json, output_json, "-algorithm", algorithm]
+    command = [
+        "python",
+        pyblend_path,
+        input_json,
+        output_json,
+        "-algorithm",
+        algorithm,
+        # "-maxiters",
+        # "25000",
+        # " -constructive",
+        # "premodel"
+    ]
 
     try:
         result = subprocess.run(command, check=True, capture_output=True, text=True)
@@ -865,7 +876,7 @@ class InstanceDataBuilder:
             The constructed instance data structure.
         """
         instance_data = {
-            "info": ["Instance_Interactive", 1000, 1],
+            "info": ["Instance_Interactive", 1, 1],
             "stockpiles": [],
             "engines": [],
             "inputs": inputs,
@@ -906,12 +917,7 @@ class InstanceDataBuilder:
                 "rails": [int(r) for r in row["rails"]],
                 "capacity": int(row["weightIni"]),
                 "weightIni": int(row["weightIni"]),
-                "qualityIni": [
-                    {"parameter": "Fe", "value": float(row["Fe"])},
-                    {"parameter": "SiO2", "value": float(row["SiO2"])},
-                    {"parameter": "Al2O3", "value": float(row["Al2O3"])},
-                    {"parameter": "P", "value": float(row["P"])},
-                ],
+                "qualityIni": quality_ini,
             }
             instance_data["stockpiles"].append(sp)
 
@@ -991,7 +997,7 @@ def generate_gantt_chart(operations_df, sheet):
     operations_df["Início (min)"] -= operations_df["Tempo Deslocamento (min)"]
 
     # Create the Gantt plot with additional annotations
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(9, 3))
 
     # Plot each operation and add text annotations
     for idx, row in operations_df.iterrows():
