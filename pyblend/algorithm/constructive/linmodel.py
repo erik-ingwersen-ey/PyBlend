@@ -303,11 +303,14 @@ class LinModel:
                 )
 
     def __add_objective(self: "LinModel") -> None:
-        """
-        Create the objective function for the model.
+        """Create the objective function for the model.
 
-        This method is called automatically during the class instantiation,
-        and there's no need to use it afterward.
+        This method is called automatically during the class instantiation, and
+        there's no need to use it afterward. It constructs the objective
+        function by calculating various components such as deviation from
+        limits, goal deviation, scheduling reclaims, and scheduling inputs. The
+        final objective function is a weighted sum of these components, which
+        aims to minimize the total scheduling time.
         """
 
         assert self.__has_constrs, (
