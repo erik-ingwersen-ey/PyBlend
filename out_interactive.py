@@ -358,6 +358,28 @@ def json_input_output_to_excel(
     json_output_path: str | Path,
     excel_path: str | Path | None = None,
 ):
+    """Convert JSON input and output data to an Excel file.
+
+    This function reads JSON data from specified input and output paths,
+    processes the data into various DataFrames, and then saves the results
+    into an Excel file. If an Excel path is not provided, it generates a
+    default path based on the output JSON path. The function handles
+    multiple aspects of the data, including stockpiles, engines, and
+    operational metrics, and organizes them into a structured format
+    suitable for analysis.
+
+    Args:
+        json_input_path (str | Path): The file path to the input JSON file containing instance data.
+        json_output_path (str | Path): The file path to the output JSON file containing results.
+        excel_path (str | Path | None?): The file path where the Excel file will be saved.
+            If None, a default path will be generated. Defaults to None.
+
+    Returns:
+        tuple: A tuple containing two DataFrames:
+            - operations_df: DataFrame with operational metrics.
+            - outputs_df_out: DataFrame with output checks and values.
+    """
+
     check_is_file(json_input_path, json_output_path)
 
     if excel_path is None:
@@ -846,23 +868,22 @@ class InstanceDataBuilder:
     ) -> Dict[str, Any]:
         """Builds the instance data structure.
 
-        Parameters
-        ----------
-        stockpiles : pd.DataFrame
-            A `pandas.DataFrame` containing stockpile information.
-        engines : pd.DataFrame
-            A `pandas.DataFrame` containing engine information.
-        travel_times : List[List[float]]
-            Nested list representing travel times between locations.
-        inputs : List[Dict[str, Any]]
-            List of dictionaries representing input data.
-        outputs : List[Dict[str, Any]]
-            List of dictionaries representing output data.
+        This function constructs a comprehensive data structure that includes
+        information about stockpiles, engines, travel times, and input/output
+        data. It processes the provided stockpile and engine data to create a
+        structured representation suitable for further analysis or simulation.
+        The function also ensures that certain attributes are consistent across
+        stockpiles and generates additional quality metrics.
 
-        Returns
-        -------
-        Dict[str, Any]
-            The constructed instance data structure.
+        Args:
+            stockpiles (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
+            engines (pd.DataFrame): A `pandas.DataFrame` containing engine information.
+            travel_times (List[List[float]]): Nested list representing travel times between locations.
+            inputs (List[Dict[str, Any]]): List of dictionaries representing input data.
+            outputs (List[Dict[str, Any]]): List of dictionaries representing output data.
+
+        Returns:
+            Dict[str, Any]: The constructed instance data structure.
         """
         instance_data = {
             "info": ["Instance_Interactive", 1000, 1],
@@ -1034,6 +1055,27 @@ def main(
     instance_json_path: str = "./tests/instance_interactive.json",
     output_json_path: str = "./out/json/out_interactive.json",
 ):
+    """Run the main process for extracting and processing data from an Excel
+    file.
+
+    This function serves as the entry point for the application. It
+    initializes the ExcelDataExtractor to read data from a specified Excel
+    file, processes various dataframes related to stockpiles, yards,
+    engines, and travel speeds, and builds an instance data structure. The
+    resulting data is then written to a JSON file, and further operations
+    are performed to generate outputs and update the Excel sheets. Finally,
+    it generates a Gantt chart based on the operations data extracted from
+    the results sheet.
+
+    Args:
+        excel_filepath (str): The path to the Excel file to be processed. Defaults to
+            "out_interactive.xlsm".
+        instance_json_path (str): The path where the instance JSON file will be saved. Defaults to
+            "./tests/instance_interactive.json".
+        output_json_path (str): The path where the output JSON file will be saved. Defaults to
+            "./out/json/out_interactive.json".
+    """
+
     # excel_filepath = str(Path(excel_filepath).resolve())
     instance_json_path = str(Path(__file__).parent.joinpath(instance_json_path).resolve())
     output_json_path = str(Path(__file__).parent.joinpath(output_json_path).resolve())
