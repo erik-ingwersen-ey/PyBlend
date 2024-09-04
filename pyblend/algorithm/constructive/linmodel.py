@@ -363,7 +363,10 @@ class LinModel:
 
         # objective function
         self._omp += (
-            self._w_1 * d_limit + self._w_2 * d_goal + r_scheduling + i_scheduling + total_time * 1_000
+            self._w_1 * d_limit
+            + self._w_2 * d_goal
+            + r_scheduling
+            + i_scheduling
         )
 
     def __normalize(self: "LinModel", j: int, k: int, bound: str) -> float:

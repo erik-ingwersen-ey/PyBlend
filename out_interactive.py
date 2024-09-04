@@ -628,6 +628,7 @@ def json_input_output_to_excel(
         True,
         False,
     )
+    # outputs_df_out = outputs_df_out.loc[~outputs_df_out["parameter"].isin(["Dummy"]), :]
     rename_dict = {
         "parameter": "Elemento",
         "value": "Valor",
@@ -873,7 +874,31 @@ class InstanceDataBuilder:
             "timeTravel": travel_times,
         }
 
+        all_fe_the_same = stockpiles["Fe"].nunique() == 1
+        all_sio2_the_same = stockpiles["SiO2"].nunique() == 1
+        all_al2o3_the_same = stockpiles["Al2O3"].nunique() == 1
+        all_p_the_same = stockpiles["P"].nunique() == 1
+        all_the_same = (stockpiles[["Al2O3", "Fe", "SiO2", "P"]].round(2).nunique() == 1).all()
+        all_w_the_same = stockpiles["weightIni"].nunique() == 1
+
+        if all_w_the_same:
+            stockpiles["weightIni"].iloc[-1] = 0
+
+        stockpiles["Dummy"] = np.random.randint(1, 100, stockpiles.shape[0])
+
         for _, row in stockpiles.iterrows():
+            sio2 = row["SiO2"]
+            fe = row["Fe"]
+            al2o3 = row["Al2O3"]
+            p = row["P"]
+            quality_ini = [
+                {"parameter": "Fe", "value": float(round(fe, 4))},
+                {"parameter": "SiO2", "value": float(round(sio2, 4))},
+                {"parameter": "Al2O3", "value": float(round(al2o3, 4))},
+                {"parameter": "P", "value": float(round(p, 4))},
+                {"parameter": "Dummy", "value": float(row["Dummy"])}
+            ]
+
             sp = {
                 "id": int(row["id"]),
                 "position": int(row["id"]) - 1,
@@ -891,6 +916,7 @@ class InstanceDataBuilder:
             instance_data["stockpiles"].append(sp)
 
         all_yards = [int(y) for y in stockpiles["yard"].drop_duplicates().to_list()]
+
         for _, row in engines.iterrows():
             eng = {
                 "id": int(row["id"]),
@@ -902,6 +928,15 @@ class InstanceDataBuilder:
             }
             instance_data["engines"].append(eng)
 
+        instance_data["outputs"][0]["quality"].append(
+            {
+                "parameter": "Dummy",
+                "minimum": 0,
+                "maximum": 100,
+                "goal": float(stockpiles["Dummy"].mean()),
+                "importance": 1,
+            }
+        )
         return instance_data
 
 
@@ -1022,7 +1057,6 @@ def main(
         yards_df,
         {"ID": "id", "Área": "yard", "Quantidade (ton)": "weightIni"},
     )
-
     # Process travel speed data
     travel_times = TravelSpeedProcessor.process(
         travel_speed_df, {"De": "from", "Para": "to"}
@@ -1047,21 +1081,21 @@ def main(
                     "minimum": 2.8,
                     "maximum": 5.8,
                     "goal": 5.8,
-                    "importance": 1000,
+                    "importance": 10,
                 },
                 {
                     "parameter": "Al2O3",
                     "minimum": 2.5,
                     "maximum": 4.9,
                     "goal": 4.9,
-                    "importance": 100,
+                    "importance": 10,
                 },
                 {
                     "parameter": "P",
                     "minimum": 0.05,
                     "maximum": 0.07,
                     "goal": 0.07,
-                    "importance": 100,
+                    "importance": 10,
                 },
             ],
             "time": 600,
