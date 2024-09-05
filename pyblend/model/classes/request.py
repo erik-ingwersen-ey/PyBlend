@@ -41,11 +41,14 @@ class Request(Quality):
 
     def __repr__(self: 'Request') -> str:
         """String representation of a Quality Request parameter.
-        
-        Returns
-        -------
-        str
-            The string representation of this class.
+
+        This method provides a formatted string that includes the key attributes
+        of the Quality Request parameter, such as the parameter name, minimum
+        and maximum values, goal, and importance. It is useful for debugging and
+        logging purposes, allowing for a quick overview of the object's state.
+
+        Returns:
+            str: The string representation of this class, detailing its attributes.
         """
 
         return (
