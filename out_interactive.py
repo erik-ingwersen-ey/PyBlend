@@ -368,14 +368,20 @@ def json_input_output_to_excel(
     metrics, and organizes them into a structured format suitable for
     analysis.
 
-    Args:
-        json_input_path (str | Path): The path to the input JSON file containing instance data.
-        json_output_path (str | Path): The path to the output JSON file containing results.
-        excel_path (str | Path | None?): The path where the Excel file will be saved.
-            If None, a default path will be generated. Defaults to None.
+    Parameters
+    ----------
+    json_input_path : str | Path
+        The path to the input JSON file containing instance data.
+    json_output_path : str | Path
+        The path to the output JSON file containing results.
+    excel_path : str | Path | None
+        The path where the Excel file will be saved.
+        If None, a default path will be generated. Defaults to None.
 
-    Returns:
-        tuple: A tuple containing two DataFrames:
+    Returns
+    -------
+    tuple
+        A tuple containing two DataFrames:
             - operations_df: DataFrame with processed operations data.
             - outputs_df_out: DataFrame with processed output data.
     """
@@ -676,13 +682,19 @@ def run_pyblend_command(
     executed in a subprocess, and if it fails, a RuntimeError is raised with
     the error message.
 
-    Args:
-        input_json (str): The input JSON file path.
-        output_json (str): The output JSON file path.
-        algorithm (str?): The algorithm to be used, by default "lahc".
+    Parameters
+    ----------
+    input_json : str
+        The input JSON file path.
+    output_json : str
+        The output JSON file path.
+    algorithm : str, default="lahc"
+        The algorithm to be used.
 
-    Raises:
-        RuntimeError: If the command fails to execute successfully.
+    Raises
+    ------
+    RuntimeError
+        If the command fails to execute successfully.
     """
     pyblend_path = str(Path(__file__).parent.joinpath("./pyblend").resolve())
     command = [
@@ -887,15 +899,23 @@ class InstanceDataBuilder:
         ensuring that the resulting data structure is well-organized and ready
         for use.
 
-        Args:
-            stockpiles (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
-            engines (pd.DataFrame): A `pandas.DataFrame` containing engine information.
-            travel_times (List[List[float]]): Nested list representing travel times between locations.
-            inputs (List[Dict[str, Any]]): List of dictionaries representing input data.
-            outputs (List[Dict[str, Any]]): List of dictionaries representing output data.
+        Parameters
+        ----------
+        stockpiles : pd.DataFrame
+            A `pandas.DataFrame` containing stockpile information.
+        engines : pd.DataFrame
+            A `pandas.DataFrame` containing engine information.
+        travel_times : List[List[float]]
+            Nested list representing travel times between locations.
+        inputs : List[Dict[str, Any]]
+            List of dictionaries representing input data.
+        outputs : List[Dict[str, Any]]
+            List of dictionaries representing output data.
 
-        Returns:
-            Dict[str, Any]: The constructed instance data structure.
+        Returns
+        -------
+        Dict[str, Any]
+            The constructed instance data structure.
         """
         instance_data = {
             "info": ["Instance_Interactive", 1, 1],
@@ -1013,15 +1033,12 @@ def generate_gantt_chart(operations_df, sheet):
     vehicle, and any necessary annotations. The Gantt chart is then added to
     the specified Excel sheet.
 
-    Args:
-        operations_df (pd.DataFrame): A DataFrame containing operations data with columns
-            such as 'Início', 'Fim', 'Veículo', and 'Pilha'.
-        sheet (object): An object representing the Excel sheet where the Gantt chart will
-            be added.
-
-    Returns:
-        None: This function does not return a value but modifies the provided sheet by
-            adding the Gantt chart.
+    Parameters
+    ----------
+    operations_df : pd.DataFrame
+        A DataFrame containing operations data with columns such as 'Início', 'Fim', 'Veículo', and 'Pilha'.
+    sheet : object
+        An object representing the Excel sheet where the Gantt chart will be added.
     """
 
     operations_df = operations_df.iloc[:-1]
