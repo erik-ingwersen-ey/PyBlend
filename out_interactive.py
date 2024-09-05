@@ -1098,6 +1098,30 @@ def main(
     instance_json_path: str = "./tests/instance_interactive.json",
     output_json_path: str = "./out/json/out_interactive.json",
 ):
+    """Run the main process for extracting and processing data from an Excel
+    file.
+
+    This function serves as the entry point for the application. It
+    initializes the ExcelDataExtractor to read data from a specified Excel
+    file, processes various dataframes related to stockpiles, yards,
+    engines, and travel speeds, and builds an instance data structure. The
+    resulting data is then written to a JSON file, and further operations
+    are performed to generate outputs and update the Excel sheets. Finally,
+    it generates a Gantt chart based on the operations data extracted from
+    the results sheet.
+
+    Parameters
+    ----------
+    excel_filepath : str
+        The path to the Excel file to be processed. Defaults to "out_interactive.xlsm".
+    instance_json_path : str
+        The path where the instance JSON file will be saved.
+        Defaults to "./tests/instance_interactive.json".
+    output_json_path : str
+        The path where the output JSON file will be saved.
+        Defaults to "./out/json/out_interactive.json".
+    """
+
     # excel_filepath = str(Path(excel_filepath).resolve())
     instance_json_path = str(Path(__file__).parent.joinpath(instance_json_path).resolve())
     output_json_path = str(Path(__file__).parent.joinpath(output_json_path).resolve())
