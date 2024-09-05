@@ -40,12 +40,16 @@ def is_integer(value):
     equivalent to an integer. If the value is an iterable, it recursively
     checks each element to confirm if they are all integers.
 
-    Args:
-        value (Union[int, str, float, Iterable]): The value to be checked for integer status.
+    Parameters
+    ----------
+    value : Union[int, str, float, Iterable]
+        The value to be checked for integer status.
 
-    Returns:
-        bool: True if the value is an integer or can be interpreted as an integer;
-            otherwise, False.
+    Returns
+    -------
+    bool
+        True if the value is an integer or can be interpreted as an integer;
+        otherwise, False.
     """
 
     if isinstance(value, int):
@@ -71,9 +75,13 @@ def autofit_columns_from_sheet(sheet, min_width=10):
     specified minimum width. The autofit operation is performed for each
     column from the first to the last used column in the sheet.
 
-    Args:
-        sheet (xlwings.Sheet): The sheet where columns need to be autofit.
-        min_width (int?): The minimum width for any column. Defaults to 10.
+
+    Parameters
+    ----------
+    sheet : xlwings.Sheet
+        The sheet where columns need to be autofit.
+    min_width : int, default=10
+        The minimum width for any column.
     """
     # Get the last used column in the sheet
     last_used_column = sheet.used_range.last_cell.column
@@ -99,8 +107,10 @@ def format_excel_sheet(sheet: xw.Sheet):
     last row is highlighted with a different color and bold text to
     distinguish it from the rest of the data.
 
-    Args:
-        sheet (xlwings.Sheet): The sheet to be formatted.
+    Parameters
+    ----------
+    sheet : xlwings.Sheet
+        The sheet to be formatted.
     """
     sheet.used_range.clear_formats()
 
@@ -160,8 +170,10 @@ def format_integer_columns(sheet: xw.Sheet):
     formatting helps improve the readability of numerical data in the
     spreadsheet.
 
-    Args:
-        sheet (xlwings.Sheet): The sheet to be formatted.
+    Parameters
+    ----------
+    sheet xlwings.Sheet
+        The sheet to be formatted.
     """
     # Get the last used column and row in the sheet
     last_column = sheet.used_range.last_cell.column
@@ -192,18 +204,22 @@ def explode_quality_rows(
     are repeated for each exploded row. This is useful for normalizing data
     where quality parameters are stored as dictionaries within a DataFrame.
 
-    Args:
-        df (pd.DataFrame): The dataframe with the output specifications containing
-            the quality columns that hold dictionaries of quality parameters to be
-            extracted.
-        quality_col_prefix (str?): The prefix of the quality columns
-            that contain the output pile specifications that need to be extracted
-            into different columns. Defaults to 'quality_'.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe with the output specifications containing the quality
+        columns that hold dictionaries of quality parameters to be extracted.
+    quality_col_prefix : str, default='quality_'
+        The prefix of the quality columns
+        that contain the output pile specifications that need to be extracted
+        into different columns.
 
-    Returns:
-        pd.DataFrame: A pandas DataFrame with the quality dictionaries extracted
-            into new columns, where each dictionary is represented as a separate
-            row alongside the repeated original columns.
+    Returns
+    -------
+    pd.DataFrame
+        A pandas DataFrame with the quality dictionaries extracted
+        into new columns, where each dictionary is represented as a separate
+        row alongside the repeated original columns.
     """
     # Create a new DataFrame to store exploded rows
     exploded_df = pd.DataFrame()
@@ -327,13 +343,17 @@ def process_stockpiles_and_engines(
     the appropriate engines and extracting the necessary quality values
     before returning the updated DataFrame.
 
-    Args:
-        stockpiles_df (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
-        engines_df (pd.DataFrame): A `pandas.DataFrame` containing engine information.
+    Parameters
+    ----------
+    stockpiles_df : pd.DataFrame
+        A `pandas.DataFrame` containing stockpile information.
+    engines_df : pd.DataFrame
+        A `pandas.DataFrame` containing engine information.
 
-    Returns:
-        pd.DataFrame: Processed `stockpiles_df` with engines assigned and quality values
-            extracted.
+    Returns
+    -------
+    pd.DataFrame
+        Processed `stockpiles_df` with engines assigned and quality values extracted.
     """
     stockpiles_df = assign_engines_to_stockpiles(stockpiles_df, engines_df)
     stockpiles_df = extract_quality_ini_values(stockpiles_df)
@@ -385,23 +405,30 @@ def json_input_output_to_excel(
 ):
     """Convert JSON input and output data to an Excel file.
 
-    This function reads JSON data from specified input and output files,
-    processes the data into structured DataFrames, and saves the results
+    This function reads JSON data from specified input and output paths,
+    processes the data into various DataFrames, and then saves the results
     into an Excel file. If an Excel path is not provided, it generates a
-    default path based on the output JSON file's location. The function
-    handles various aspects of the data, including stockpiles, engines, and
-    operational metrics, and prepares them for export to Excel.
+    default path based on the output JSON path. The function handles
+    multiple aspects of the data, including stockpiles, engines, and quality
+    metrics, and organizes them into a structured format suitable for
+    analysis.
 
-    Args:
-        json_input_path (str | Path): The path to the input JSON file containing instance data.
-        json_output_path (str | Path): The path to the output JSON file containing results.
-        excel_path (str | Path | None?): The path where the Excel file will be saved.
-            If None, a default path will be generated. Defaults to None.
+    Parameters
+    ----------
+    json_input_path : str | Path
+        The path to the input JSON file containing instance data.
+    json_output_path : str | Path
+        The path to the output JSON file containing results.
+    excel_path : str | Path | None
+        The path where the Excel file will be saved.
+        If None, a default path will be generated. Defaults to None.
 
-    Returns:
-        tuple: A tuple containing two DataFrames:
-            - operations_df: DataFrame with processed operational data.
-            - outputs_df_out: DataFrame with output data and checks.
+    Returns
+    -------
+    tuple
+        A tuple containing two DataFrames:
+            - operations_df: DataFrame with processed operations data.
+            - outputs_df_out: DataFrame with processed output data.
     """
 
     check_is_file(json_input_path, json_output_path)
@@ -674,6 +701,7 @@ def json_input_output_to_excel(
         True,
         False,
     )
+    # outputs_df_out = outputs_df_out.loc[~outputs_df_out["parameter"].isin(["Dummy"]), :]
     rename_dict = {
         "parameter": "Elemento",
         "value": "Valor",
@@ -699,16 +727,33 @@ def run_pyblend_command(
     execution. If the command fails to execute successfully, a RuntimeError
     is raised.
 
-    Args:
-        input_json (str): The input JSON file path.
-        output_json (str): The output JSON file path.
-        algorithm (str?): The algorithm to be used, by default "lahc".
+    Parameters
+    ----------
+    input_json : str
+        The input JSON file path.
+    output_json : str
+        The output JSON file path.
+    algorithm : str, default="lahc"
+        The algorithm to be used.
 
-    Raises:
-        RuntimeError: If the command fails to execute successfully.
+    Raises
+    ------
+    RuntimeError
+        If the command fails to execute successfully.
     """
     pyblend_path = str(Path(__file__).parent.joinpath("./pyblend").resolve())
-    command = ["python", pyblend_path, input_json, output_json, "-algorithm", algorithm]
+    command = [
+        "python",
+        pyblend_path,
+        input_json,
+        output_json,
+        "-algorithm",
+        algorithm,
+        # "-maxiters",
+        # "25000",
+        # " -constructive",
+        # "premodel"
+    ]
 
     try:
         result = subprocess.run(command, check=True, capture_output=True, text=True)
@@ -749,13 +794,17 @@ class ExcelDataExtractor:
         True, the function will treat the data as a table; otherwise, it will
         extract the data as is.
 
-        Args:
-            range (str): The cell range to start extracting data from.
-            expand (bool?): Whether to expand the range to a table.
-                Defaults to True.
+        Parameters
+        ----------
+        range : str
+            The cell range to start extracting data from.
+        expand : bool, default=True
+            Whether to expand the range to a table.
 
-        Returns:
-            pd.DataFrame: Extracted data as a pandas DataFrame.
+        Returns
+        -------
+        pd.DataFrame
+            Extracted data as a pandas DataFrame.
         """
         return (
             self.sheet[range]
@@ -787,15 +836,19 @@ class StockpileProcessor:
         Finally, it merges the processed stockpile and yard DataFrames on the
         'yard' column using a left join.
 
-        Args:
-            stockpiles (pd.DataFrame): A `pandas.DataFrame` containing
-                stockpile information.
-            yards (pd.DataFrame): A `pandas.DataFrame` containing yard
-                information.
-            rename_dict (Dict[str, str]): Dictionary for renaming columns.
+        Parameters
+        ----------
+        stockpiles : pd.DataFrame
+            A `pandas.DataFrame` containing stockpile information.
+        yards : pd.DataFrame
+            A `pandas.DataFrame` containing yard information.
+        rename_dict : Dict[str, str]
+            Dictionary for renaming columns.
 
-        Returns:
-            pd.DataFrame: Merged DataFrame of stockpiles and yards.
+        Returns
+        -------
+        pd.DataFrame
+            Merged DataFrame of stockpiles and yards.
         """
         stockpiles = stockpiles.rename(columns=rename_dict).astype(
             {col: int for col in rename_dict.values()}
@@ -815,11 +868,15 @@ class StockpileProcessor:
         with the original engine columns removed, leaving only the processed
         rails information.
 
-        Args:
-            yards (pd.DataFrame): A `pandas.DataFrame` containing yard information.
+        Parameters
+        ----------
+        yards : pd.DataFrame
+            A `pandas.DataFrame` containing yard information.
 
-        Returns:
-            pd.DataFrame: Processed DataFrame with rails information.
+        Returns
+        -------
+        pd.DataFrame
+            Processed DataFrame with rails information.
         """
         engine_cols = [
             col for col in yards.columns if any(ch.isnumeric() for ch in col)
@@ -859,12 +916,17 @@ class TravelSpeedProcessor:
         of these travel times. The function handles multiple speed columns by
         filling missing values with available data.
 
-        Args:
-            travel_speed (pd.DataFrame): A `pandas.DataFrame` containing travel speed data.
-            rename_dict (Dict[str, str]): Dictionary for renaming columns.
+        Parameters
+        ----------
+        travel_speed : pd.DataFrame
+            A `pandas.DataFrame` containing travel speed data.
+        rename_dict : Dict[str, str]
+            Dictionary for renaming columns.
 
-        Returns:
-            List[List[float]]: Nested list representing travel times between locations.
+        Returns
+        -------
+        List[List[float]]
+            Nested list representing travel times between locations.
         """
         travel_speed = travel_speed.rename(columns=rename_dict)
         stockpiles_from_to_cols = list(rename_dict.values())
@@ -910,18 +972,26 @@ class InstanceDataBuilder:
         stockpile and engine DataFrames to extract relevant attributes and
         compiles them into a structured format.
 
-        Args:
-            stockpiles (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
-            engines (pd.DataFrame): A `pandas.DataFrame` containing engine information.
-            travel_times (List[List[float]]): Nested list representing travel times between locations.
-            inputs (List[Dict[str, Any]]): List of dictionaries representing input data.
-            outputs (List[Dict[str, Any]]): List of dictionaries representing output data.
+        Parameters
+        ----------
+        stockpiles : pd.DataFrame
+            A `pandas.DataFrame` containing stockpile information.
+        engines : pd.DataFrame
+            A `pandas.DataFrame` containing engine information.
+        travel_times : List[List[float]]
+            Nested list representing travel times between locations.
+        inputs : List[Dict[str, Any]]
+            List of dictionaries representing input data.
+        outputs : List[Dict[str, Any]]
+            List of dictionaries representing output data.
 
-        Returns:
-            Dict[str, Any]: The constructed instance data structure.
+        Returns
+        -------
+        Dict[str, Any]
+            The constructed instance data structure.
         """
         instance_data = {
-            "info": ["Instance_Interactive", 1000, 1],
+            "info": ["Instance_Interactive", 1, 1],
             "stockpiles": [],
             "engines": [],
             "inputs": inputs,
@@ -930,7 +1000,31 @@ class InstanceDataBuilder:
             "timeTravel": travel_times,
         }
 
+        all_fe_the_same = stockpiles["Fe"].nunique() == 1
+        all_sio2_the_same = stockpiles["SiO2"].nunique() == 1
+        all_al2o3_the_same = stockpiles["Al2O3"].nunique() == 1
+        all_p_the_same = stockpiles["P"].nunique() == 1
+        all_the_same = (stockpiles[["Al2O3", "Fe", "SiO2", "P"]].round(2).nunique() == 1).all()
+        all_w_the_same = stockpiles["weightIni"].nunique() == 1
+
+        if all_w_the_same:
+            stockpiles["weightIni"].iloc[-1] = 0
+
+        stockpiles["Dummy"] = np.random.randint(1, 100, stockpiles.shape[0])
+
         for _, row in stockpiles.iterrows():
+            sio2 = row["SiO2"]
+            fe = row["Fe"]
+            al2o3 = row["Al2O3"]
+            p = row["P"]
+            quality_ini = [
+                {"parameter": "Fe", "value": float(round(fe, 4))},
+                {"parameter": "SiO2", "value": float(round(sio2, 4))},
+                {"parameter": "Al2O3", "value": float(round(al2o3, 4))},
+                {"parameter": "P", "value": float(round(p, 4))},
+                {"parameter": "Dummy", "value": float(row["Dummy"])}
+            ]
+
             sp = {
                 "id": int(row["id"]),
                 "position": int(row["id"]) - 1,
@@ -938,16 +1032,12 @@ class InstanceDataBuilder:
                 "rails": [int(r) for r in row["rails"]],
                 "capacity": int(row["weightIni"]),
                 "weightIni": int(row["weightIni"]),
-                "qualityIni": [
-                    {"parameter": "Fe", "value": float(row["Fe"])},
-                    {"parameter": "SiO2", "value": float(row["SiO2"])},
-                    {"parameter": "Al2O3", "value": float(row["Al2O3"])},
-                    {"parameter": "P", "value": float(row["P"])},
-                ],
+                "qualityIni": quality_ini,
             }
             instance_data["stockpiles"].append(sp)
 
         all_yards = [int(y) for y in stockpiles["yard"].drop_duplicates().to_list()]
+
         for _, row in engines.iterrows():
             eng = {
                 "id": int(row["id"]),
@@ -959,6 +1049,15 @@ class InstanceDataBuilder:
             }
             instance_data["engines"].append(eng)
 
+        instance_data["outputs"][0]["quality"].append(
+            {
+                "parameter": "Dummy",
+                "minimum": 0,
+                "maximum": 100,
+                "goal": float(stockpiles["Dummy"].mean()),
+                "importance": 1,
+            }
+        )
         return instance_data
 
 
@@ -972,10 +1071,14 @@ def update_excel_sheets(operations_df: pd.DataFrame, outputs_df_out: pd.DataFram
     designated sheets. The function also formats the sheets for better
     readability.
 
-    Args:
-        operations_df (pd.DataFrame): A `pandas.DataFrame` containing operation results.
-        outputs_df_out (pd.DataFrame): A `pandas.DataFrame` containing output check results.
-        excel_file (str): Path to the Excel file to be updated.
+    Parameters
+    ----------
+    operations_df : pd.DataFrame
+      A `pandas.DataFrame` containing operation results.
+    outputs_df_out : pd.DataFrame
+      A `pandas.DataFrame` containing output check results.
+    excel_file : str
+      Path to the Excel file to be updated.
     """
     wb = xw.Book(excel_file)
     resultados_sheet = wb.sheets['Resultados']
@@ -1010,17 +1113,12 @@ def generate_gantt_chart(operations_df, sheet):
     represents an operation. The chart includes annotations for additional
     information about each operation.
 
-    Args:
-        operations_df (pd.DataFrame): A DataFrame containing operations data with columns
-            for vehicle, start time, end time, and other relevant
-            metrics.
-        sheet: An object representing the target sheet where the Gantt chart will be
-            added.
-
-    Returns:
-        None: The function does not return any value but adds the Gantt chart to the
-            specified
-            sheet.
+    Parameters
+    ----------
+    operations_df : pd.DataFrame
+        A DataFrame containing operations data with columns such as 'Início', 'Fim', 'Veículo', and 'Pilha'.
+    sheet : object
+        An object representing the Excel sheet where the Gantt chart will be added.
     """
 
     operations_df = operations_df.iloc[:-1]
@@ -1037,7 +1135,7 @@ def generate_gantt_chart(operations_df, sheet):
     operations_df["Início (min)"] -= operations_df["Tempo Deslocamento (min)"]
 
     # Create the Gantt plot with additional annotations
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(9, 3))
 
     # Plot each operation and add text annotations
     for idx, row in operations_df.iterrows():
@@ -1080,8 +1178,8 @@ def main(
     instance_json_path: str = "./tests/instance_interactive.json",
     output_json_path: str = "./out/json/out_interactive.json",
 ):
-    """Run the main process for extracting data from an Excel file and
-    generating outputs.
+    """
+    Run the main process for extracting data from an Excel file and generating outputs.
 
     This function orchestrates the extraction of data from a specified Excel
     file, processes the data to build an instance data structure, and writes
@@ -1091,13 +1189,16 @@ def main(
     travel speeds, and generates a Gantt chart based on the operations
     extracted.
 
-    Args:
-        excel_filepath (str): The path to the Excel file to be processed. Defaults to
-            "out_interactive.xlsm".
-        instance_json_path (str): The path where the instance JSON file will be saved. Defaults to
-            "./tests/instance_interactive.json".
-        output_json_path (str): The path where the output JSON file will be saved. Defaults to
-            "./out/json/out_interactive.json".
+    Parameters
+    ----------
+    excel_filepath : str
+        The path to the Excel file to be processed. Defaults to "out_interactive.xlsm".
+    instance_json_path : str
+        The path where the instance JSON file will be saved.
+        Defaults to "./tests/instance_interactive.json".
+    output_json_path : str
+        The path where the output JSON file will be saved.
+        Defaults to "./out/json/out_interactive.json".
     """
 
     # excel_filepath = str(Path(excel_filepath).resolve())
@@ -1123,7 +1224,6 @@ def main(
         yards_df,
         {"ID": "id", "Área": "yard", "Quantidade (ton)": "weightIni"},
     )
-
     # Process travel speed data
     travel_times = TravelSpeedProcessor.process(
         travel_speed_df, {"De": "from", "Para": "to"}
@@ -1148,21 +1248,21 @@ def main(
                     "minimum": 2.8,
                     "maximum": 5.8,
                     "goal": 5.8,
-                    "importance": 1000,
+                    "importance": 10,
                 },
                 {
                     "parameter": "Al2O3",
                     "minimum": 2.5,
                     "maximum": 4.9,
                     "goal": 4.9,
-                    "importance": 100,
+                    "importance": 10,
                 },
                 {
                     "parameter": "P",
                     "minimum": 0.05,
                     "maximum": 0.07,
                     "goal": 0.07,
-                    "importance": 100,
+                    "importance": 10,
                 },
             ],
             "time": 600,

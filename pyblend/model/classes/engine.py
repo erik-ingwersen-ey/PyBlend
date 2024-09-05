@@ -48,12 +48,17 @@ class Engine:
         self._yards: List[int] = yards
 
     def __repr__(self: 'Engine') -> str:
-        """String representation of an Engine.
-        
-        Returns
-        -------
-        str
-            The string representation of this class.
+        """Return a string representation of the Engine instance.
+
+        This method provides a detailed string representation of the Engine
+        object, including its unique identifier, speed stack, speed reclaim,
+        initial position, rail, and yards. This is useful for debugging and
+        logging purposes, allowing for a clear view of the Engine's current
+        state.
+
+        Returns:
+            str: A formatted string containing the attributes of the
+            Engine instance.
         """
 
         return (
@@ -67,7 +72,15 @@ class Engine:
 
     @property
     def id(self: 'Engine') -> int:
-        """The Engine identifier."""
+        """Retrieve the identifier of the Engine.
+
+        This method returns the unique identifier associated with the Engine
+        instance. The identifier is an integer that can be used to distinguish
+        this Engine from others.
+
+        Returns:
+            int: The unique identifier of the Engine.
+        """
         return self._id
 
     @id.setter
@@ -76,11 +89,15 @@ class Engine:
 
     @property
     def speed_stack(self: 'Engine') -> float:
-        """
-        The stacking speed of the engine.
+        """Retrieve the stacking speed of the engine.
 
-        If this attribute is different from zero,
-        then the equipment can perform the stacking function.
+        This method returns the stacking speed of the engine, which indicates
+        whether the equipment can perform the stacking function. If the stacking
+        speed is different from zero, it implies that the engine is capable of
+        executing the stacking operation.
+
+        Returns:
+            float: The stacking speed of the engine.
         """
         return self._speed_stack
 
@@ -90,11 +107,15 @@ class Engine:
 
     @property
     def speed_reclaim(self: 'Engine') -> float:
-        """
-        The reclaiming speed of the engine.
+        """Retrieve the reclaiming speed of the engine.
 
-        If this attribute is different from zero,
-        then the equipment can perform the reclaiming function.
+        This method returns the reclaiming speed of the engine, which indicates
+        whether the equipment can perform the reclaiming function. If the speed
+        is different from zero, it implies that the equipment is capable of
+        performing the reclaiming operation.
+
+        Returns:
+            float: The reclaiming speed of the engine.
         """
         return self._speed_reclaim
 
@@ -104,7 +125,15 @@ class Engine:
 
     @property
     def pos_ini(self: 'Engine') -> int:
-        """The starting position of the engine."""
+        """Retrieve the starting position of the engine.
+
+        This method returns the initial position of the engine, which is stored
+        as an internal attribute. It is useful for understanding the engine's
+        configuration and state at the beginning of its operation.
+
+        Returns:
+            int: The starting position of the engine.
+        """
         return self._pos_ini
 
     @pos_ini.setter
@@ -113,7 +142,16 @@ class Engine:
 
     @property
     def rail(self: 'Engine') -> int:
-        """The rail to which the engine is attached."""
+        """Get the rail to which the engine is attached.
+
+        This method retrieves the rail identifier associated with the engine
+        instance. It accesses the private attribute `_rail` and returns its
+        value, which represents the specific rail that the engine is connected
+        to.
+
+        Returns:
+            int: The rail identifier of the engine.
+        """
         return self._rail
 
     @rail.setter
@@ -122,7 +160,15 @@ class Engine:
 
     @property
     def yards(self: 'Engine') -> List[int]:
-        """List with the ore yards that the engine has access to."""
+        """Retrieve the list of ore yards accessible by the engine.
+
+        This method returns a list containing the ore yards that the engine has
+        access to. The information is stored in a private attribute, ensuring
+        encapsulation and maintaining the integrity of the data.
+
+        Returns:
+            List[int]: A list of integers representing the ore yards.
+        """
         return self._yards
 
     @yards.setter

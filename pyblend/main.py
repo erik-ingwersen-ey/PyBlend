@@ -260,10 +260,15 @@ def read_args(args: List[str], parms: Parameters) -> None:
 def print_usage(parms: Parameters) -> None:
     """Print the program usage.
 
-    Parameters
-    ----------
-    parms : Parameters
-        The operating guidelines.
+    This function displays the usage instructions for the program, including
+    the required input and output file names, as well as optional parameters
+    that can be specified. It provides detailed information on each option,
+    including default values, and examples of how to run the program with
+    various configurations.
+
+    Args:
+        parms (Parameters): The operating guidelines containing default values
+            for various options.
     """
     usage: str = (
         f"Usage: python pyblend <input> <output> [options]\n"
