@@ -358,6 +358,34 @@ def json_input_output_to_excel(
     json_output_path: str | Path,
     excel_path: str | Path | None = None,
 ):
+    """Convert JSON input and output data to an Excel file.
+
+    This function reads JSON data from specified input and output paths,
+    processes the data into various DataFrames, and then saves the results
+    into an Excel file. If an Excel path is not provided, it generates a
+    default path based on the output JSON path. The function handles
+    multiple aspects of the data, including stockpiles, engines, and quality
+    metrics, and organizes them into a structured format suitable for
+    analysis.
+
+    Parameters
+    ----------
+    json_input_path : str | Path
+        The path to the input JSON file containing instance data.
+    json_output_path : str | Path
+        The path to the output JSON file containing results.
+    excel_path : str | Path | None
+        The path where the Excel file will be saved.
+        If None, a default path will be generated. Defaults to None.
+
+    Returns
+    -------
+    tuple
+        A tuple containing two DataFrames:
+            - operations_df: DataFrame with processed operations data.
+            - outputs_df_out: DataFrame with processed output data.
+    """
+
     check_is_file(json_input_path, json_output_path)
 
     if excel_path is None:
@@ -648,14 +676,20 @@ def run_pyblend_command(
 ) -> None:
     """Runs the pyblend command with the specified input and output JSON files.
 
+    This function constructs and executes a command to run the pyblend tool
+    using the provided input and output JSON file paths. It allows for an
+    optional algorithm parameter, which defaults to "lahc". The command is
+    executed in a subprocess, and if it fails, a RuntimeError is raised with
+    the error message.
+
     Parameters
     ----------
     input_json : str
         The input JSON file path.
     output_json : str
         The output JSON file path.
-    algorithm : str, optional
-        The algorithm to be used, by default "lahc".
+    algorithm : str, default="lahc"
+        The algorithm to be used.
 
     Raises
     ------
@@ -857,6 +891,14 @@ class InstanceDataBuilder:
     ) -> Dict[str, Any]:
         """Builds the instance data structure.
 
+        This function constructs a comprehensive data structure that includes
+        information about stockpiles, engines, input data, and output data. It
+        processes the provided stockpile and engine data to create a structured
+        representation that can be used for further analysis or simulation. The
+        function also handles specific attributes of the stockpiles and engines,
+        ensuring that the resulting data structure is well-organized and ready
+        for use.
+
         Parameters
         ----------
         stockpiles : pd.DataFrame
@@ -983,6 +1025,22 @@ def update_excel_sheets(operations_df: pd.DataFrame, outputs_df_out: pd.DataFram
 
 
 def generate_gantt_chart(operations_df, sheet):
+    """Generate a Gantt chart from operations data.
+
+    This function takes a DataFrame containing operations data and generates
+    a Gantt chart visualizing the start and end times of each operation. The
+    DataFrame is expected to have columns for the start time, end time,
+    vehicle, and any necessary annotations. The Gantt chart is then added to
+    the specified Excel sheet.
+
+    Parameters
+    ----------
+    operations_df : pd.DataFrame
+        A DataFrame containing operations data with columns such as 'Início', 'Fim', 'Veículo', and 'Pilha'.
+    sheet : object
+        An object representing the Excel sheet where the Gantt chart will be added.
+    """
+
     operations_df = operations_df.iloc[:-1]
     operations_df["Início"] = pd.to_timedelta(operations_df["Início"], unit="m")
     operations_df["Fim"] = pd.to_timedelta(operations_df["Fim"], unit="m")
