@@ -20,11 +20,10 @@ def main():
     output.
 
     This function is responsible for parsing command-line arguments,
-    initializing parameters, and orchestrating the solution process for a
-    given problem. It sets up the necessary components such as the problem
-    instance, solution object, and model. It also handles the execution of
-    the specified algorithm if provided, and manages feedback mechanisms
-    based on the parameters set.
+    initializing parameters, and orchestrating the solution process. It
+    reads input data, constructs the necessary models and heuristics, and
+    outputs the results to a specified file. The function also handles
+    feedback mechanisms if specified in the parameters.
     """
     start_time = time.time()
     parms: Parameters = {
@@ -67,23 +66,25 @@ def main():
 def construct(
     problem: Problem, solution: Solution, model: LinModel, parms: Parameters
 ) -> Constructive:
-    """This function executes the selected constructive method.
+    """Execute the selected constructive method for the given problem.
 
-    Parameters
-    ----------
-    problem : Problem
-        The problem reference.
-    solution : Solution
-        The solution reference.
-    model : LinModel
-        The linear model.
-    parms : Parameters
-        The operating guidelines.
+    This function orchestrates the execution of either a pre-model or post-
+    model constructive method based on the provided parameters. It first
+    checks the 'constructive' parameter to determine which method to
+    execute. If the method is 'premodel', it initializes the necessary
+    inputs and outputs, sets the objective for the solution, and runs the
+    pre-model process. The results are then used to update the linear model
+    weights. If the method is 'postmodel', it resolves the model and runs
+    the post-model process.
 
-    Returns
-    -------
-    Constructive
-        The constructive procedure.
+    Args:
+        problem (Problem): The problem reference containing stockpiles and inputs.
+        solution (Solution): The solution reference to set objectives.
+        model (LinModel): The linear model to be updated with weights.
+        parms (Parameters): The operating guidelines that dictate the method to use.
+
+    Returns:
+        Constructive: The constructive procedure that was executed.
     """
     constructive: Constructive
 
@@ -122,23 +123,23 @@ def construct(
 def solve(
     problem: Problem, solution: Solution, constructive: Constructive, parms: Parameters
 ) -> Optional[Heuristic]:
-    """This functions runs the selected heuristic approach.
+    """Run the selected heuristic approach to solve a given problem.
 
-    Parameters
-    ----------
-    problem : Problem
-        The problem reference.
-    solution : Solution
-        The solution reference.
-    constructive : Constructive
-        The constructive procedure.
-    parms : Parameters
-        The operating guidelines.
+    This function initializes and executes a heuristic solver based on the
+    specified algorithm in the parameters. It supports different algorithms
+    such as LAHC (Late Acceptance Hill Climbing) and SA (Simulated
+    Annealing). The function creates neighborhoods for the problem and runs
+    the solver with the provided solution and operational guidelines.
 
-    Returns
-    -------
-    Optional[Heuristic]
-        The heuristic procedure.
+    Args:
+        problem (Problem): The problem reference to be solved.
+        solution (Solution): The solution reference where results will be stored.
+        constructive (Constructive): The constructive procedure used in the solving process.
+        parms (Parameters): The operating guidelines that dictate the algorithm and its parameters.
+
+    Returns:
+        Optional[Heuristic]: The heuristic procedure used for solving the problem, or None if no
+            valid algorithm was selected.
     """
     solver: Optional[Heuristic] = None
     if parms["algorithm"] == "lahc":
@@ -157,16 +158,25 @@ def solve(
 def create_neighborhoods(
     problem: Problem, solver: Heuristic, constructive: Constructive
 ) -> None:
-    """This function creates the neighborhoods for the heuristic.
+    """Create neighborhoods for the heuristic.
 
-    Parameters
-    ----------
-    problem : Problem
-        The problem reference.
-    solver : Heuristic
-        The heuristic procedure.
-    constructive : Constructive
-        The constructive procedure.
+    This function initializes various neighborhood structures for a given
+    heuristic solver. It adds multiple move strategies to the solver, which
+    are essential for exploring the solution space of the problem. The moves
+    include different types of shifts and swaps that can be utilized during
+    the heuristic search process.
+
+    Args:
+        problem (Problem): The problem reference that defines the context
+            in which the neighborhoods are created.
+        solver (Heuristic): The heuristic procedure that will utilize the
+            neighborhoods for solving the problem.
+        constructive (Constructive): The constructive procedure that aids
+            in generating solutions within the defined neighborhoods.
+
+    Returns:
+        None: This function does not return any value; it modifies the
+            solver in place by adding move strategies.
     """
     solver.add_move(Shift(problem, constructive))
     solver.add_move(SimpleSwap(problem, constructive))
@@ -185,20 +195,24 @@ def feedback_approach(
     constructive: Constructive,
     parms: Parameters,
 ) -> None:
-    """Run the feedback approach.
+    """Run the feedback approach to optimize a solution using a linear model.
 
-    Parameters
-    ----------
-    solution : Solution
-        The solution reference.
-    model : LinModel
-        The linear model.
-    solver : Heuristic
-        The heuristic procedure.
-    constructive : Constructive
-        The constructive procedure.
-    parms : Parameters
-        The operating guidelines.
+    This function iteratively applies a feedback mechanism to improve the
+    given solution based on the specified linear model and constructive
+    procedures. It updates the model with the current weights from the
+    solution, resolves the model to obtain an objective, and then runs the
+    constructive procedure. If a solver is provided, it will also execute
+    the solver on the updated solution for a specified number of iterations.
+
+    Args:
+        solution (Solution): The solution reference to be optimized.
+        model (LinModel): The linear model used for optimization.
+        solver (Optional[Heuristic]): The heuristic procedure for further
+            optimization, if provided.
+        constructive (Constructive): The constructive procedure to apply
+            during the feedback loop.
+        parms (Parameters): The operating guidelines, including feedback
+            iterations and maximum iterations for the solver.
     """
     for _ in range(parms["feedback"]):
         model.add_weights("x", list(solution.weights.values()))
@@ -215,12 +229,18 @@ def feedback_approach(
 def read_args(args: List[str], parms: Parameters) -> None:
     """Read the input arguments.
 
-    Parameters
-    ----------
-    args : Lst[str]
-        The terminal argument list.
-    parms : Parameters
-        The operating guidelines.
+    This function processes command-line arguments and updates the provided
+    parameters dictionary based on the options specified. It expects a list
+    of arguments that may include various flags and their corresponding
+    values. If the number of arguments is less than three, it will print
+    usage information. The function supports multiple options, including
+    settings for constructive methods, algorithms, feedback levels, random
+    seed values, maximum iterations, and parameters specific to local search
+    and simulated annealing.
+
+    Args:
+        args (List[str]): The terminal argument list.
+        parms (Parameters): The operating guidelines.
     """
     if len(args) < 3:
         print_usage(parms)
@@ -260,15 +280,17 @@ def read_args(args: List[str], parms: Parameters) -> None:
 def print_usage(parms: Parameters) -> None:
     """Print the program usage.
 
-    This function displays the usage instructions for the program, including
-    the required input and output file names, as well as optional parameters
-    that can be specified. It provides detailed information on each option,
-    including default values, and examples of how to run the program with
-    various configurations.
+    This function prints the usage instructions for the program, detailing
+    the required input and output files, as well as the available options
+    and parameters that can be specified by the user. It provides a clear
+    guide on how to run the program, including examples of command-line
+    usage.
 
-    Args:
-        parms (Parameters): The operating guidelines containing default values
-            for various options.
+    Parameteres
+    -----------
+    parms : Parameters
+        The operating guidelines containing
+        default values for various options.
     """
     usage: str = (
         f"Usage: python pyblend <input> <output> [options]\n"
