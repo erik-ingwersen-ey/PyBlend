@@ -1,0 +1,104 @@
+{
+  "info": [
+    "Instance_Interactive",
+    1000,
+    1
+  ],
+  "objective": 808303.6235820897,
+  "gap": [
+    0.05
+  ],
+  "stacks": [],
+  "reclaims": [
+    {
+      "weight": 100000.0,
+      "stockpile": 16,
+      "engine": 1,
+      "start_time": 21.53,
+      "duration": 16.03,
+      "output": 1
+    },
+    {
+      "weight": 100000.0,
+      "stockpile": 19,
+      "engine": 1,
+      "start_time": 29.64,
+      "duration": 25.64,
+      "output": 1
+    },
+    {
+      "weight": 100000.0,
+      "stockpile": 15,
+      "engine": 1,
+      "start_time": 56.28,
+      "duration": 25.64,
+      "output": 1
+    },
+    {
+      "weight": 100000.0,
+      "stockpile": 18,
+      "engine": 2,
+      "start_time": 1.0,
+      "duration": 38.46,
+      "output": 1
+    },
+    {
+      "weight": 100000.0,
+      "stockpile": 17,
+      "engine": 2,
+      "start_time": 40.46,
+      "duration": 38.46,
+      "output": 1
+    }
+  ],
+  "outputs": [
+    {
+      "weight": 500000,
+      "start_time": 1.0,
+      "duration": 80.92,
+      "quality": [
+        {
+          "parameter": "Fe",
+          "value": 81.7,
+          "minimum": 60,
+          "maximum": 100,
+          "goal": 65,
+          "importance": 10
+        },
+        {
+          "parameter": "SiO2",
+          "value": 5.7,
+          "minimum": 2.8,
+          "maximum": 5.8,
+          "goal": 5.8,
+          "importance": 10
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 4.7,
+          "minimum": 2.5,
+          "maximum": 4.9,
+          "goal": 4.9,
+          "importance": 10
+        },
+        {
+          "parameter": "P",
+          "value": 0.06,
+          "minimum": 0.05,
+          "maximum": 0.07,
+          "goal": 0.07,
+          "importance": 10
+        },
+        {
+          "parameter": "Dummy",
+          "value": 68.8,
+          "minimum": 0,
+          "maximum": 100,
+          "goal": 56.45,
+          "importance": 1
+        }
+      ]
+    }
+  ],
+  "time": 0.17
+}

@@ -2,7 +2,7 @@ import random
 
 from typing import List, Optional
 
-from pyblend.algorithm.neighborhood import Move
+from pyblend.algorithm.neighborhood import Move, SmartSwap
 from pyblend.model.problem import Problem
 from pyblend.model.solution import Solution
 

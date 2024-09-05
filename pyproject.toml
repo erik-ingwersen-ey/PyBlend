@@ -26,18 +26,27 @@ include = [
     'MANIFEST.in',
     'requirements.txt',
     'tests/*',
+    'out/*',
+    'notebooks/*',
+    'design/*',
+    '.github/**/*',
+    'README.md',
 ]
 
 
 [tool.poetry.dependencies]
 python = '>=3.9,<3.11'
 
-ujson = ">=5.10.0"
-numpy = ">=2.0.1"
-mip = ">=1.15.0"
-pandas = "^2.2.2"
 jupyterlab = "^4.2.4"
+mip = ">=1.15.0"
+numpy = ">=2.0.1"
 openpyxl = "^3.1.5"
+pandas = "^2.2.2"
+ujson = ">=5.10.0"
+xlwings = "^0.32.1"
+pulp = "^2.9.0"
+matplotlib = "^3.9.2"
+plotly = "^5.24.0"
 
 [tool.poetry.scripts]
 poetry = 'poetry.console:run'
@@ -70,7 +79,7 @@ skip_glob = 'docs/conf.py'
 [tool.black]
 line-length = 120
 skip-string-normalization = true
-target-version = ['py37', 'py38', 'py39']
+target-version = ['py39', 'py310', 'py311']
 include = '\.pyi?$'
 exclude = '''
 /(

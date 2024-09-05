@@ -1,6 +1,7 @@
 import random
 import sys
 import time
+from pathlib import Path
 from typing import List, Optional
 
 from pyblend.algorithm.constructive import Constructive, LinModel, PostModel, PreModel
@@ -36,7 +37,7 @@ def main():
 
     random.seed(parms["seed"])
 
-    input_path = handle_input_path(sys.argv[1])
+    input_path = str(Path(sys.argv[1]).resolve())
     output_path = handle_output_path(sys.argv[2])
 
     problem: Problem = Problem(input_path)

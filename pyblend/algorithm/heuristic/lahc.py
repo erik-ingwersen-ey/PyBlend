@@ -2,7 +2,7 @@ import copy
 from typing import List
 
 from pyblend.algorithm.heuristic.heuristic import Heuristic
-from pyblend.algorithm.neighborhood import Move
+from pyblend.algorithm.neighborhood import Move, SmartSwap
 from pyblend.model.problem import Problem
 from pyblend.model.solution import Solution
 

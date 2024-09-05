@@ -1,0 +1,128 @@
+{
+  "info": [
+    "Instance_001",
+    1000,
+    1
+  ],
+  "objective": 2246205.6665111063,
+  "gap": [
+    0.13
+  ],
+  "stacks": [],
+  "reclaims": [
+    {
+      "weight": 45000.0,
+      "stockpile": 2,
+      "engine": 1,
+      "start_time": 0.06,
+      "duration": 11.54,
+      "output": 1
+    },
+    {
+      "weight": 37833.3,
+      "stockpile": 5,
+      "engine": 1,
+      "start_time": 12.3,
+      "duration": 9.7,
+      "output": 1
+    },
+    {
+      "weight": 9916.7,
+      "stockpile": 1,
+      "engine": 1,
+      "start_time": 23.21,
+      "duration": 2.54,
+      "output": 1
+    },
+    {
+      "weight": 75000.0,
+      "stockpile": 6,
+      "engine": 1,
+      "start_time": 26.55,
+      "duration": 19.23,
+      "output": 1
+    },
+    {
+      "weight": 37250.0,
+      "stockpile": 4,
+      "engine": 2,
+      "start_time": 1.21,
+      "duration": 14.33,
+      "output": 1
+    },
+    {
+      "weight": 45000.0,
+      "stockpile": 8,
+      "engine": 2,
+      "start_time": 16.04,
+      "duration": 17.31,
+      "output": 1
+    },
+    {
+      "weight": 50000.0,
+      "stockpile": 9,
+      "engine": 2,
+      "start_time": 33.75,
+      "duration": 19.23,
+      "output": 1
+    }
+  ],
+  "outputs": [
+    {
+      "weight": 300000,
+      "start_time": 0.06,
+      "duration": 52.92,
+      "quality": [
+        {
+          "parameter": "Fe",
+          "value": 64.45,
+          "minimum": 60,
+          "maximum": 100,
+          "goal": 65,
+          "importance": 10
+        },
+        {
+          "parameter": "SiO2",
+          "value": 4.38,
+          "minimum": 2.8,
+          "maximum": 5.8,
+          "goal": 5.8,
+          "importance": 1000
+        },
+        {
+          "parameter": "Al2O3",
+          "value": 4.9,
+          "minimum": 2.5,
+          "maximum": 4.9,
+          "goal": 4.9,
+          "importance": 100
+        },
+        {
+          "parameter": "P",
+          "value": 0.06,
+          "minimum": 0.05,
+          "maximum": 0.07,
+          "goal": 0.07,
+          "importance": 100
+        },
+        {
+          "parameter": "+31.5",
+          "value": 9.48,
+          "minimum": 8,
+          "maximum": 10,
+          "goal": 10,
+          "importance": 100
+        },
+        {
+          "parameter": "-6.3",
+          "value": 25.0,
+          "minimum": 20,
+          "maximum": 25,
+          "goal": 25,
+          "importance": 100
+        }
+      ]
+    }
+  ],
+  "time": 0.19
+}

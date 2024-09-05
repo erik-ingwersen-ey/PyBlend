@@ -43,10 +43,11 @@ class Input:
         debugging and logging purposes to quickly visualize the state of an
         Input object.
 
-        Returns:
-            str: The string representation of this class.
+        Returns
+        -------
+        str
+            The string representation of this class.
         """
-
         return (
             f'id: {self._id}\n'
             + f'weight: {self._weight}\n'

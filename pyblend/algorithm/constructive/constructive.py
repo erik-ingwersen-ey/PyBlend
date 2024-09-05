@@ -177,8 +177,7 @@ class Constructive:
         Parameters
         ----------
         start_time : List[float]
-            List with the time when each engine can
-                start a new task.
+            List with the time when each engine can start a new task.
         engine : Engine
             The engine reference.
 

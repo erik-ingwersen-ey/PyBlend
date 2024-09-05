@@ -86,3 +86,13 @@ run-default:
 	@$(RUN_DEFAULT)
 
 all: run run-lahc run-sa run-inverse run-feedback
+
+clean-pyc: # remove Python file artifacts
+	find . -name '*.DS_Store' -exec rm -f {} +
+	find . -name '*.pyc' -exec rm -f {} +
+	find . -name '*.pyo' -exec rm -f {} +
+	find . -name '*~' -exec rm -f {} +
+	find . -name '__pycache__' -exec rm -fr {} +
+	find . -name '.ipynb_checkpoints' -exec rm -fr {} +
+
+
