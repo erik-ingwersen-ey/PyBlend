@@ -1110,13 +1110,16 @@ def main(
     it generates a Gantt chart based on the operations data extracted from
     the results sheet.
 
-    Args:
-        excel_filepath (str): The path to the Excel file to be processed. Defaults to
-            "out_interactive.xlsm".
-        instance_json_path (str): The path where the instance JSON file will be saved. Defaults to
-            "./tests/instance_interactive.json".
-        output_json_path (str): The path where the output JSON file will be saved. Defaults to
-            "./out/json/out_interactive.json".
+    Parameters
+    ----------
+    excel_filepath : str
+        The path to the Excel file to be processed. Defaults to "out_interactive.xlsm".
+    instance_json_path : str
+        The path where the instance JSON file will be saved.
+        Defaults to "./tests/instance_interactive.json".
+    output_json_path : str
+        The path where the output JSON file will be saved.
+        Defaults to "./out/json/out_interactive.json".
     """
 
     # excel_filepath = str(Path(excel_filepath).resolve())
