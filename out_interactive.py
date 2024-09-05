@@ -55,12 +55,16 @@ def is_integer(value):
     is equivalent to an integer. If the input is an iterable, it recursively
     checks each element to see if they are integers.
 
-    Args:
-        value (Union[int, str, float, Iterable]): The value to be checked.
+    Parameters
+    ----------
+    value : Union[int, str, float, Iterable]
+        The value to be checked for integer status.
 
-    Returns:
-        bool: True if the value is an integer or can be interpreted as one; False
-            otherwise.
+    Returns
+    -------
+    bool
+        True if the value is an integer or can be interpreted as an integer;
+        otherwise, False.
     """
 
     if isinstance(value, int):
@@ -86,9 +90,12 @@ def autofit_columns_from_sheet(sheet, min_width=10):
     specified minimum width. The autofitting process is performed by
     checking the width of each column and adjusting it accordingly.
 
-    Args:
-        sheet (xlwings.Sheet): The sheet where columns need to be autofit.
-        min_width (int?): The minimum width for any column. Defaults to 10.
+    Parameters
+    ----------
+    sheet : xlwings.Sheet
+        The sheet where columns need to be autofit.
+    min_width : int, default=10
+        The minimum width for any column.
     """
     # Get the last used column in the sheet
     last_used_column = sheet.used_range.last_cell.column
@@ -115,8 +122,10 @@ def format_excel_sheet(sheet: xw.Sheet):
     highlighted with a different color and bold text to distinguish it from
     the other rows.
 
-    Args:
-        sheet (xlwings.Sheet): The sheet to be formatted.
+    Parameters
+    ----------
+    sheet : xlwings.Sheet
+        The sheet to be formatted.
     """
     sheet.used_range.clear_formats()
 
@@ -176,8 +185,10 @@ def format_integer_columns(sheet: xw.Sheet):
     formatting helps improve the readability of integer data in the
     spreadsheet.
 
-    Args:
-        sheet (xlwings.Sheet): The sheet to be formatted.
+    Parameters
+    ----------
+    sheet xlwings.Sheet
+        The sheet to be formatted.
     """
     # Get the last used column and row in the sheet
     last_column = sheet.used_range.last_cell.column
@@ -208,17 +219,22 @@ def explode_quality_rows(
     each exploded row. This is useful for normalizing data where quality
     parameters are stored in a nested format.
 
-    Args:
-        df (pd.DataFrame): The dataframe with the output specifications
-            containing the quality columns that include dictionaries of
-            quality parameters to be extracted.
-        quality_col_prefix (str?): The prefix of the quality
-            columns that contain the output specifications to be extracted
-            into different columns. Defaults to 'quality_'.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe with the output specifications containing the quality
+        columns that hold dictionaries of quality parameters to be extracted.
+    quality_col_prefix : str, default='quality_'
+        The prefix of the quality columns
+        that contain the output pile specifications that need to be extracted
+        into different columns.
 
-    Returns:
-        pd.DataFrame: A pandas DataFrame with the quality dictionaries
-            extracted into new columns, resulting in a normalized format.
+    Returns
+    -------
+    pd.DataFrame
+        A pandas DataFrame with the quality dictionaries extracted
+        into new columns, where each dictionary is represented as a separate
+        row alongside the repeated original columns.
     """
     # Create a new DataFrame to store exploded rows
     exploded_df = pd.DataFrame()
@@ -350,13 +366,17 @@ def process_stockpiles_and_engines(
     produce a new DataFrame that includes the assigned engines and the
     extracted quality values.
 
-    Args:
-        stockpiles_df (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
-        engines_df (pd.DataFrame): A `pandas.DataFrame` containing engine information.
+    Parameters
+    ----------
+    stockpiles_df : pd.DataFrame
+        A `pandas.DataFrame` containing stockpile information.
+    engines_df : pd.DataFrame
+        A `pandas.DataFrame` containing engine information.
 
-    Returns:
-        pd.DataFrame: Processed `stockpiles_df` with engines assigned and quality values
-            extracted.
+    Returns
+    -------
+    pd.DataFrame
+        Processed `stockpiles_df` with engines assigned and quality values extracted.
     """
     stockpiles_df = assign_engines_to_stockpiles(stockpiles_df, engines_df)
     stockpiles_df = extract_quality_ini_values(stockpiles_df)
@@ -414,16 +434,22 @@ def json_input_output_to_excel(
     metrics, and organizes them into a structured format suitable for
     analysis.
 
-    Args:
-        json_input_path (str | Path): The path to the input JSON file containing instance data.
-        json_output_path (str | Path): The path to the output JSON file containing results.
-        excel_path (str | Path | None): The path where the Excel file will be saved.
-            If None, a default path will be generated. Defaults to None.
+    Parameters
+    ----------
+    json_input_path : str | Path
+        The path to the input JSON file containing instance data.
+    json_output_path : str | Path 
+        The path to the output JSON file containing results.
+    excel_path : str | Path | None
+        The path where the Excel file will be saved.
+        If None, a default path will be generated. Defaults to None.
 
-    Returns:
-        tuple: A tuple containing two DataFrames:
-            - operations_df: DataFrame with processed operations data.
-            - outputs_df_out: DataFrame with processed output data.
+    Returns
+    -------
+    tuple
+        A tuple containing two DataFrames:
+          - operations_df: DataFrame with processed operations data.
+          - outputs_df_out: DataFrame with processed output data.
     """
 
     check_is_file(json_input_path, json_output_path)
@@ -718,9 +744,9 @@ def run_pyblend_command(
 
     This function constructs and executes a command to run the pyblend tool
     using the provided input and output JSON file paths. It allows for an
-    optional algorithm parameter, which defaults to "lahc". The command is
-    executed in a subprocess, and if it fails, a RuntimeError is raised with
-    the error message.
+    optional algorithm parameter to specify which algorithm to use during
+    execution. If the command fails to execute successfully, a RuntimeError
+    is raised.
 
     Args:
         input_json (str): The input JSON file path.
@@ -784,13 +810,17 @@ class ExcelDataExtractor:
         will treat the specified range as a table; otherwise, it will return the
         data as is.
 
-        Args:
-            range (str): The cell range to start extracting data from.
-            expand (bool?): Whether to expand the range to a table.
-                Defaults to True.
+        Parameters
+        ----------
+        range : str
+            The cell range to start extracting data from.
+        expand : bool, default=True
+            Whether to expand the range to a table.
 
-        Returns:
-            pd.DataFrame: Extracted data as a pandas DataFrame.
+        Returns
+        -------
+        pd.DataFrame
+            Extracted data as a pandas DataFrame.
         """
         return (
             self.sheet[range]
@@ -822,13 +852,19 @@ class StockpileProcessor:
         left join, resulting in a combined DataFrame that includes both
         stockpile and yard data.
 
-        Args:
-            stockpiles (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
-            yards (pd.DataFrame): A `pandas.DataFrame` containing yard information.
-            rename_dict (Dict[str, str]): Dictionary for renaming columns.
+        Parameters
+        ----------
+        stockpiles : pd.DataFrame
+            A `pandas.DataFrame` containing stockpile information.
+        yards : pd.DataFrame
+            A `pandas.DataFrame` containing yard information.
+        rename_dict : Dict[str, str]
+            Dictionary for renaming columns.
 
-        Returns:
-            pd.DataFrame: Merged DataFrame of stockpiles and yards.
+        Returns
+        -------
+        pd.DataFrame
+            Merged DataFrame of stockpiles and yards. DataFrame of stockpiles and yards.
         """
         stockpiles = stockpiles.rename(columns=rename_dict).astype(
             {col: int for col in rename_dict.values()}
@@ -848,11 +884,15 @@ class StockpileProcessor:
         with each yard. Finally, it returns a DataFrame with the processed data,
         excluding the original engine columns.
 
-        Args:
-            yards (pd.DataFrame): A `pandas.DataFrame` containing yard information.
+        Parameters
+        ----------
+        yards : pd.DataFrame
+            A `pandas.DataFrame` containing yard information.
 
-        Returns:
-            pd.DataFrame: Processed DataFrame with rails information.
+        Returns
+        -------
+        pd.DataFrame
+          Processed DataFrame with rails information.
         """
         engine_cols = [
             col for col in yards.columns if any(ch.isnumeric() for ch in col)
@@ -893,12 +933,17 @@ class TravelSpeedProcessor:
         nested list, where each sublist represents travel times from a specific
         origin to various destinations.
 
-        Args:
-            travel_speed (pd.DataFrame): A `pandas.DataFrame` containing travel speed data.
-            rename_dict (Dict[str, str]): Dictionary for renaming columns.
+        Parameters
+        ----------
+        travel_speed : pd.DataFrame
+            A `pandas.DataFrame` containing travel speed data.
+        rename_dict : Dict[str, str]
+            Dictionary for renaming columns.
 
-        Returns:
-            List[List[float]]: Nested list representing travel times between locations.
+        Returns
+        -------
+        List[List[float]]
+            Nested list representing travel times between locations.
         """
         travel_speed = travel_speed.rename(columns=rename_dict)
         stockpiles_from_to_cols = list(rename_dict.values())
@@ -937,19 +982,24 @@ class InstanceDataBuilder:
         """Builds the instance data structure.
 
         This function constructs a comprehensive data structure that includes
-        information about stockpiles, engines, input data, and output data. It
-        processes the provided stockpile and engine data to create a structured
-        representation that can be used for further analysis or simulation. The
-        function also handles specific attributes of the stockpiles and engines,
-        ensuring that the resulting data structure is well-organized and ready
-        for use.
+        information about stockpiles, engines, input data, output data, and
+        travel times. It processes the provided stockpile and engine data from
+        pandas DataFrames and organizes them into a dictionary format suitable
+        for further analysis or processing. The function iterates through the
+        stockpile and engine DataFrames to extract relevant attributes and
+        compiles them into a structured format.
 
-        Args:
-            stockpiles (pd.DataFrame): A `pandas.DataFrame` containing stockpile information.
-            engines (pd.DataFrame): A `pandas.DataFrame` containing engine information.
-            travel_times (List[List[float]]): Nested list representing travel times between locations.
-            inputs (List[Dict[str, Any]]): List of dictionaries representing input data.
-            outputs (List[Dict[str, Any]]): List of dictionaries representing output data.
+        Parameters
+        ----------
+        stockpiles : pd.DataFrame
+            A `pandas.DataFrame` containing stockpile information.
+        engines : pd.DataFrame
+            A `pandas.DataFrame` containing engine information.
+        travel_times : List[List[float]]
+            Nested list representing travel times between locations.
+        inputs : List[Dict[str, Any]])
+            List of dictionaries representing input data.
+        outputs : List[Dict[str, Any]]): List of dictionaries representing output data.
 
         Returns:
             Dict[str, Any]: The constructed instance data structure.
@@ -1034,15 +1084,14 @@ def update_excel_sheets(operations_df: pd.DataFrame, outputs_df_out: pd.DataFram
     new data into them. The function also formats the Excel sheets for
     better readability and adjusts the columns to fit the content.
 
-    Args:
-        operations_df (pd.DataFrame): A `pandas.DataFrame` containing
-            operation results.
-        outputs_df_out (pd.DataFrame): A `pandas.DataFrame` containing
-            output check results.
-        excel_file (str): Path to the Excel file to be updated.
-
-    Returns:
-        None: This function does not return any value.
+    Parameters
+    ----------
+    operations_df : pd.DataFrame
+      A `pandas.DataFrame` containing operation results.
+    outputs_df_out : pd.DataFrame
+      A `pandas.DataFrame` containing output check results.
+    excel_file : str
+      Path to the Excel file to be updated.
     """
     wb = xw.Book(excel_file)
     resultados_sheet = wb.sheets['Resultados']
@@ -1071,20 +1120,19 @@ def generate_gantt_chart(operations_df, sheet):
     """Generate a Gantt chart from operations data.
 
     This function takes a DataFrame containing operations data and generates
-    a Gantt chart visualizing the start and end times of each operation. The
-    DataFrame is expected to have columns for the start time, end time,
-    vehicle, and any necessary annotations. The Gantt chart is then added to
-    the specified Excel sheet.
+    a Gantt chart visualizing the start and end times of each operation. It
+    processes the time data to convert it into a format suitable for
+    plotting, and then creates a horizontal bar chart where each bar
+    represents an operation. The chart includes annotations for additional
+    information about each operation.
 
-    Args:
-        operations_df (pd.DataFrame): A DataFrame containing operations data
-            with columns such as 'Início', 'Fim', 'Veículo', and 'Pilha'.
-        sheet (object): An object representing the Excel sheet where the
-            Gantt chart will be added.
-
-    Returns:
-        None: This function does not return a value; it modifies the provided
-            Excel sheet directly by adding the Gantt chart.
+    Parameters
+    ----------
+    operations_df : pd.DataFrame
+        A DataFrame containing operations data
+          with columns such as 'Início', 'Fim', 'Veículo', and 'Pilha'.
+    sheet : object
+         An object representing the Excel sheet where the Gantt chart will be added.
     """
 
     operations_df = operations_df.iloc[:-1]
@@ -1144,25 +1192,25 @@ def main(
     instance_json_path: str = "./tests/instance_interactive.json",
     output_json_path: str = "./out/json/out_interactive.json",
 ):
-    """Run the main process for extracting and processing data from an Excel
-    file.
+    """
+    Run the main process for extracting data from an Excel file and generating outputs.
 
-    This function serves as the entry point for the application. It
-    initializes the ExcelDataExtractor to read data from a specified Excel
-    file, processes various dataframes related to stockpiles, yards,
-    engines, and travel speeds, and builds an instance data structure. The
-    resulting data is then written to a JSON file, and further operations
-    are performed to generate outputs and update the Excel sheets. Finally,
-    it generates a Gantt chart based on the operations data extracted from
-    the results sheet.
+    This function orchestrates the extraction of data from a specified Excel
+    file, processes the data to build an instance data structure, and writes
+    the results to a JSON file. It also executes a command to run a PyBlend
+    operation and updates the Excel sheets with the results. The function
+    handles various data types including stockpiles, yards, engines, and
+    travel speeds, and generates a Gantt chart based on the operations
+    extracted.
 
-    Args:
-        excel_filepath (str): The path to the Excel file to be processed.
-            Defaults to "out_interactive.xlsm".
-        instance_json_path (str): The path where the instance JSON file will be saved.
-            Defaults to "./tests/instance_interactive.json".
-        output_json_path (str): The path where the output JSON file will be saved.
-            Defaults to "./out/json/out_interactive.json".
+    Parameters
+    ----------
+    excel_filepath : str, default="out_interactive.xlsm"
+        The path to the Excel file to be processed.
+    instance_json_path : str, default="./tests/instance_interactive.json"
+        The path where the instance JSON file will be saved.
+    output_json_path : str, default="./out/json/out_interactive.json"
+        The path where the output JSON file will be saved.
     """
 
     # excel_filepath = str(Path(excel_filepath).resolve())

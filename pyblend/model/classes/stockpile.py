@@ -50,12 +50,16 @@ class Stockpile:
         self._quality_ini: List[Quality] = quality_ini
 
     def __repr__(self: 'Stockpile') -> str:
-        """String representation of a `Stockpile`.
-        
-        Returns
-        -------
-        str
-            The string representation of the `Stockpile` class instance.
+        """Return a string representation of the `Stockpile` instance.
+
+        This method provides a detailed string representation of the `Stockpile`
+        class instance, including its attributes such as id, position, yard,
+        rails, capacity, weightIni, and qualityIni. This representation is
+        useful for debugging and logging purposes, allowing for a quick overview
+        of the instance's state.
+
+        Returns:
+            str: The string representation of the `Stockpile` class instance.
         """
 
         return (
@@ -88,7 +92,14 @@ class Stockpile:
 
     @property
     def yard(self: 'Stockpile') -> int:
-        """The yard where the stockpile is located."""
+        """Get the yard where the stockpile is located.
+
+        This method returns the yard attribute of the Stockpile instance. The
+        yard represents a specific location associated with the stockpile.
+
+        Returns:
+            int: The yard number or identifier for the stockpile.
+        """
         return self._yard
 
     @yard.setter
@@ -97,7 +108,17 @@ class Stockpile:
 
     @property
     def rails(self: 'Stockpile') -> List[int]:
-        """List of rails that have access to the stockpile."""
+        """Retrieve a list of rails that have access to the stockpile.
+
+        This method returns the internal list of rails associated with the
+        stockpile instance. The rails represent connections or pathways that can
+        access the stockpile, and this method provides a way to obtain that
+        information for further processing or analysis.
+
+        Returns:
+            List[int]: A list of integers representing the rails that have
+            access to the stockpile.
+        """
         return self._rails
 
     @rails.setter
@@ -106,7 +127,15 @@ class Stockpile:
 
     @property
     def capacity(self: 'Stockpile') -> float:
-        """The stockpile ore capacity."""
+        """Get the ore capacity of the stockpile.
+
+        This method retrieves the current capacity of the stockpile, which
+        represents the maximum amount of ore that can be held. The capacity is
+        stored as a private attribute and can be accessed through this method.
+
+        Returns:
+            float: The ore capacity of the stockpile.
+        """
         return self._capacity
 
     @capacity.setter
@@ -115,7 +144,17 @@ class Stockpile:
 
     @property
     def weight_ini(self: 'Stockpile') -> float:
-        """The stockpile initial weight."""
+        """Retrieve the initial weight of the stockpile.
+
+        This method accesses the private attribute that stores the initial
+        weight of the stockpile and returns its value. The initial weight is
+        typically set during the initialization of the stockpile object and
+        represents the starting weight before any modifications or operations
+        are performed.
+
+        Returns:
+            float: The initial weight of the stockpile.
+        """
         return self._weight_ini
 
     @weight_ini.setter
@@ -124,7 +163,15 @@ class Stockpile:
 
     @property
     def quality_ini(self: 'Stockpile') -> List[Quality]:
-        """List of quality parameters presents in the stockpile.
+        """Retrieve the list of quality parameters present in the stockpile.
+
+        This method accesses the internal attribute that stores the quality
+        parameters associated with the stockpile. It returns a list of quality
+        objects that represent the various quality metrics or characteristics
+        defined for the stockpile.
+
+        Returns:
+            List[Quality]: A list containing the quality parameters of the stockpile.
         """
         return self._quality_ini
 

@@ -286,13 +286,11 @@ def print_usage(parms: Parameters) -> None:
     guide on how to run the program, including examples of command-line
     usage.
 
-    Args:
-        parms (Parameters): The operating guidelines containing default
-            values for various options.
-
-    Returns:
-        None: This function does not return a value; it prints the usage
-            information to the console and exits the program.
+    Parameteres
+    -----------
+    parms : Parameters
+        The operating guidelines containing
+        default values for various options.
     """
     usage: str = (
         f"Usage: python pyblend <input> <output> [options]\n"
