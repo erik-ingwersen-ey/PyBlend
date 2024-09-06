@@ -5,7 +5,7 @@ Documentation:
   - any-glob-to-any-file:
     - docs/**
     - guides/**
-    - **/*.md'
+    - **/*.md
     - **/*.rst
 
 # Add 'source' label to any change to src files within the source dir EXCEPT for the docs sub-folder
