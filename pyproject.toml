@@ -35,7 +35,7 @@ include = [
 
 
 [tool.poetry.dependencies]
-python = '>=3.8,<=3.11'
+python = '>=3.12,<=3.12.5'
 
 jupyterlab = "^4.2.4"
 mip = ">=1.15.0"
