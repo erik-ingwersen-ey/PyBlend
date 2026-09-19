@@ -1,4 +1,4 @@
-anyio==4.4.0 ; python_version >= "3.9" and python_version < "3.11"
+anyio==4.14.2 ; python_version >= "3.9" and python_version < "3.11"
 appnope==0.1.4 ; python_version >= "3.9" and python_version < "3.11" and platform_system == "Darwin"
 appscript==1.2.5 ; python_version >= "3.9" and python_version < "3.11" and platform_system == "Darwin"
 argon2-cffi-bindings==21.2.0 ; python_version >= "3.9" and python_version < "3.11"
