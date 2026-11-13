@@ -91,7 +91,7 @@ pywinpty==2.0.13 ; python_version >= "3.9" and python_version < "3.11" and os_na
 pyyaml==6.0.2 ; python_version >= "3.9" and python_version < "3.11"
 pyzmq==26.2.0 ; python_version >= "3.9" and python_version < "3.11"
 referencing==0.35.1 ; python_version >= "3.9" and python_version < "3.11"
-requests==2.32.3 ; python_version >= "3.9" and python_version < "3.11"
+requests==2.33.0 ; python_version >= "3.9" and python_version < "3.11"
 rfc3339-validator==0.1.4 ; python_version >= "3.9" and python_version < "3.11"
 rfc3986-validator==0.1.1 ; python_version >= "3.9" and python_version < "3.11"
 rpds-py==0.20.0 ; python_version >= "3.9" and python_version < "3.11"
