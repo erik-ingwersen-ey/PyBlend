@@ -81,7 +81,7 @@ ptyprocess==0.7.0 ; python_version >= "3.9" and python_version < "3.11" and (os_
 pulp==2.9.0 ; python_version >= "3.9" and python_version < "3.11"
 pure-eval==0.2.3 ; python_version >= "3.9" and python_version < "3.11"
 pycparser==2.22 ; python_version >= "3.9" and python_version < "3.11"
-pygments==2.18.0 ; python_version >= "3.9" and python_version < "3.11"
+pygments==2.20.0 ; python_version >= "3.9" and python_version < "3.11"
 pyparsing==3.1.4 ; python_version >= "3.9" and python_version < "3.11"
 python-dateutil==2.9.0.post0 ; python_version >= "3.9" and python_version < "3.11"
 python-json-logger==2.0.7 ; python_version >= "3.9" and python_version < "3.11"
